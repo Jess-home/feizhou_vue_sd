@@ -1,0 +1,43 @@
+
+:deep(.van-button--primary){
+    background-color: $theme;
+    border-color: $theme;
+    &.van-button--plain{
+        background-color: white;
+        color: $theme;
+    }
+}
+
+:deep(.van-tabs){
+    .van-tabs__nav--card{
+        border: var(--van-border-width-base) solid $theme;
+    }
+    .van-tab--card{
+        border-right: var(--van-border-width-base) solid $theme;
+        color: $theme;
+        background-color: #fff;
+    }
+    .van-tab--active{
+        background-color: $theme;
+        color: #fff;
+    }
+    .van-tabs__line{
+        background-color: $theme;
+    }
+}
+
+    /*滚动条凹槽的颜色，还可以设置边框属性*/
+    // ::-webkit-scrollbar-track {
+    //     -webkit-box-shadow: inset 0 0 1px transparent;
+    //     border-radius: 10px;
+    //     background-color: #f5f5f5;
+    // }
+    // ::-webkit-scrollbar-thumb {
+    //     border-radius: 10px;
+    //     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    //     background-color: #555;
+    // }
+    // /* //滚动条的宽度  */
+    // ::-webkit-scrollbar {
+    //     background-color: #f5f5f5;
+    // }
