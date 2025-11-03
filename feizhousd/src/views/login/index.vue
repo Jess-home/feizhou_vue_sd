@@ -1,12 +1,18 @@
 <template>
-  <div class="home">
+  <div class="home" :class="$route.name">
     <van-nav-bar :title="title" :left-arrow="leftArrow" @click-left="$router.go(-1)">
         <template #right>
-            <lang-vue v-if="!hideLang" color='white'></lang-vue>
+            <template v-if="$route.name === 'login'">
+                <img :src="require('@/assets/images/service.png')" class="lang-icon" alt="">
+                <lang-vue v-if="!hideLang" color='white'></lang-vue>
+            </template>
+            <template v-else>
+                <lang-vue v-if="!hideLang" color='white'></lang-vue>
+            </template>
         </template>
     </van-nav-bar>
     <img :src="logo" class="logo" alt="" :class="!leftArrow && 'lo'" width="80">
-    <div class="title">{{app_name}}</div>
+    <!-- <div class="title">{{app_name}}</div> -->
 
     <van-dialog v-model:show="show" :showConfirmButton="false">
       <div class="lang_box">
@@ -90,13 +96,29 @@ export default {
 .home{
   position: relative;
   padding-top: calc(var(--van-nav-bar-height) + 100px);
+  
+  &.login {
+    background-color: white;
+    .lang-icon {
+      width: 70px;
+      height: 70px;
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+  }
+  
+  /* 当路由为 register 时，只把 nav-bar 设为黑色背景，避免整页变黑 */
+  &.register {
+    :deep(.van-nav-bar) {
+      background-color: #000;
+    }
+  }
         :deep(.van-nav-bar){
             position: fixed !important;
             // top: 0;
             color: #333;
             padding: 10px 0;
             width: 100%;
-            background-color: #0a3cff;
             z-index: 3;
             &::after{
               border-bottom-width: 0;
@@ -117,20 +139,17 @@ export default {
     width: 100%;
   }
   .logo{
-    // width: 135px;
+    width: 535px;
     display: block;
     margin: 50px auto 10px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 5px 0 #cfcffc;
-    border-radius: 32px;
     &.lo {
       margin-top: 180px;
     }
   }
   .title{
     font-size: 32px;
-    color: #fff;
     width: 60%;
     margin: 0 auto;
   }

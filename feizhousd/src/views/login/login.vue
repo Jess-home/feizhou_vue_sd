@@ -13,6 +13,7 @@
         >
         </van-field>
         <van-field
+          style="border-bottom: 1px solid #fff;"
           v-model="pwd"
           type="password"
           name="pwd"
@@ -21,10 +22,10 @@
         />
       </van-cell-group>
       <div class="buttons">
-        <van-button round block plain type="primary" native-type="submit">
+        <van-button block type="primary" native-type="submit">
           {{$t('msg.login')}}
         </van-button>
-        <van-button round block plain  type="primary" @click="$router.push({path: '/register'})">
+        <van-button block type="default" @click="$router.push({path: '/register'})">
           {{$t('msg.register')}}
         </van-button>
 <!--        <van-button round block plain  type="primary" @click="toDown()">
@@ -115,7 +116,7 @@ export default {
 @import '@/styles/theme.scss';
 .homes{
   height: 100vh;
-  background-image: linear-gradient(180deg,#0a3cff,#0bd3ff);
+  //background-image: linear-gradient(180deg,#0a3cff,#0bd3ff);
     :deep(.van-form){
         padding: 40px 0 0;
         .van-cell-group--inset{
@@ -123,11 +124,11 @@ export default {
             background-color: initial;
         }
         .van-ellipsis{
-          color: #fff;
+          color: #000;
         }
         .van-cell{
             padding: 30px 10px;
-            border-bottom: 1px solid  var(--van-cell-border-color);
+            border-bottom: 1px solid #1a7ae7;
             background-color: initial;
             &.zdy{
               .van-field__left-icon{
@@ -181,14 +182,11 @@ export default {
         .buttons{
             padding: 0 76px;
             .van-button{
-                font-size: 26px;
+                font-size: 30px;
                 padding: 26px 0;
                 height: auto;
                 margin-top: 35px;
                 &+.van-button{
-                  background-color: rgba(255,255,255, 0.2);
-                  border: none;
-                  color: #fff;
                   margin-top: 20px;
                 }
             }

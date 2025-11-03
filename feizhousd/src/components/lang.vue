@@ -1,28 +1,27 @@
 <template>
     <div class="footer">
-        <img :src="require('@/assets/images/lang'+(color == 'white' ? 1 : '')+'.png')" class="lang" height="27" width="27" alt="" @click="showLang()">
-        <div v-if="show">
-            <van-dialog v-model:show="show" :showConfirmButton="false" closeOnClickOverlay>
-                <div class="lang_box">
-                    <!-- <img :src="require('@/assets/images/register/lang_bg.png')" class="lang_bg" /> -->
-                    <div class="title">{{$t('msg.check_lang')}}</div>
-                    <div class="content">
-                        <!-- <img :src="require('@/assets/images/register/qiu.png')" class="qiu" /> -->
-                        <div class="langs">
-                            <span class="li" :class="langcheck==item.link && 'check'" v-for="(item,index) in langs" :key="index"  @click="handSeletlanguages(item)">
-                                <!-- <img :src="item.image_url" class="img" height="18" width="27" alt=""> -->
-                                <span class="text">{{item.name}}</span>
-                            </span>
-                        </div>
-                        <div class="btn">
-                        <!-- <van-button round block type="primary" @click="submitLang">
-                            {{$t('msg.nowQh')}}
-                        </van-button> -->
-                        </div>
+        <!-- <img :src="require('@/assets/images/lang'+(color == 'white' ? 1 : '')+'.png')" class="lang" height="27" width="27" alt="" @click="showLang()"> -->
+         <div class="lang_select" @click="showLang()">
+            <img :src="require('@/assets/images/lang.png')" class="lang" height="22" width="22" alt="">
+            <div style="margin-left: 10px;">{{ langcheck }}</div>
+         
+         </div>
+         
+        <!-- 使用 vant 的右侧 Popup 代替居中 Dialog，宽度为页面一半，高度为页面高度，样式为黑底白字 -->
+        <van-popup v-model:show="show" position="right" :style="{ width: '50vw', height: '100vh' }" close-on-click-overlay>
+            <div class="lang_box popup">
+                <div class="close-btn" @click="show = false">
+                    <van-icon name="cross" />
+                </div>
+                <div class="content">
+                    <div class="langs">
+                        <span class="li" :class="langcheck==item.link && 'check'" v-for="(item,index) in langs" :key="index"  @click="handSeletlanguages(item)">
+                            <span class="text">{{item.name}}</span>
+                        </span>
                     </div>
                 </div>
-            </van-dialog>
-        </div>
+            </div>
+        </van-popup>
     </div>
 </template>
 <script>
@@ -72,6 +71,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    .lang_select{
+        color: white;
+        font-size: 32px;
+        font-weight: bold;
+        background-color: #1a7ae7;
+        padding: 10px 20px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        }
     .lang_box{
         width: 100%;
         position: relative;
@@ -131,6 +140,69 @@ export default {
         .btn{
             padding: 50px 54px 50px;
         }
+        }
+
+        /* Popup 专用样式：右侧弹出层 */
+        &.popup{
+            height: 100vh;
+            background: #000; /* 弹出层背景黑色 */
+            color: #fff; /* 文字白色 */
+            padding: 20px 16px;
+            box-sizing: border-box;
+            position: relative;
+            
+            .close-btn {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                z-index: 2;
+                
+                :deep(.van-icon) {
+                    font-size: 24px;
+                    color: #fff;
+                }
+                
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+            
+            .content{
+                text-align: left;
+                padding-top: 40px;
+                .langs{
+                    margin: 0;
+                    border: none;
+                    max-height: calc(100vh - 80px);
+                    overflow: auto;
+                    .li{
+                        padding: 24px 20px;
+                        font-size: 24px; /* 文字进一步加大 */
+                        font-weight: 800; /* 文字进一步加粗 */
+                        color: #fff !important; /* 确保纯白色 */
+                        border-bottom: 1px solid rgba(255,255,255,0.06);
+                        transition: background-color 0.2s;
+                        
+                        &:hover {
+                            background-color: rgba(255,255,255,0.1);
+                        }
+                        
+                        &.check{
+                            background-color: rgba(255,255,255,0.15);
+                        }
+                        
+                        .text {
+                            color: #fff !important; /* 确保纯白色 */
+                        }
+                    }
+                }
+            }
         }
     }
 </style>

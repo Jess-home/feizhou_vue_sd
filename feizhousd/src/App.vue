@@ -58,7 +58,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $textColor;
-  background-image: linear-gradient(#d4dff5,#f3f7fd);
+  //background-image: linear-gradient(#d4dff5,#f3f7fd);
   height: 100vh;
 }
 

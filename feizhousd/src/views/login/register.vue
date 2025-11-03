@@ -3,15 +3,8 @@
     <login-top hide-lang :title="$t('msg.register')" left-arrow></login-top>
     <van-form @submit="onSubmit">
       <van-cell-group inset>
-        <van-field
-         label-width="100"
-          v-model="invite_code"
-          name="invite_code"
-          :label="$t('msg.code')"
-          :placeholder="$t('msg.code')"
-          :rules="[{ required: true, message: $t('msg.input_code') }]"
-        />
-        <van-field
+        
+        <!-- <van-field
          label-width="100"
           class="zdy"
           v-model="tel"
@@ -20,7 +13,18 @@
           :placeholder="$t('msg.phone')"
           :rules="[{ required: true, message: $t('msg.input_phone') }]"
           
+        > -->
+        <van-field
+         label-width="100"
+          class="zdy"
+          v-model="tel"
+          name="tel"
+          :label="$t('msg.phone')"
+          :placeholder="$t('msg.phone')"
+          :rules="[{ required: true, message: $t('msg.input_phone') }]"
+          
         >
+
           <!-- <template #left-icon>
             <van-dropdown-menu active-color="#6833ff">
               <van-dropdown-item v-model="qv" :options="area_code" />
@@ -52,7 +56,7 @@
           :placeholder="$t('msg.true_pwd')"
           :rules="[{ required: true, message: $t('msg.input_true_pwd') }]"
         />
-        <van-field
+        <van-field        
          label-width="100"
           v-model="depositPwd"
           name="depositPwd"
@@ -60,13 +64,19 @@
           :placeholder="$t('msg.tx_pwd')"
           :rules="[{ required: true, message: $t('msg.input_t_pwd') }]"
         />
+        <van-field
+        style="border-bottom: 1px solid #fff;"
+         label-width="100"
+          v-model="invite_code"
+          name="invite_code"
+          :label="$t('msg.code')"
+          :placeholder="$t('msg.code')"
+          :rules="[{ required: true, message: $t('msg.input_code') }]"
+        />
       </van-cell-group>
       <div class="buttons">
-        <van-button round block plain type="primary" native-type="submit">
+        <van-button block type="primary" native-type="submit">
           {{$t('msg.register1')}}
-        </van-button>
-        <van-button round block plain  type="primary" @click="$router.push({path: '/login'})">
-          {{$t('msg.login')}}
         </van-button>
       </div>
     </van-form>
@@ -167,7 +177,7 @@ export default {
 .homes{
   height: 100vh;
   overflow: auto;
-  background-image: linear-gradient(rgb(10, 66, 255), rgb(11, 199, 255));
+  //background-image: linear-gradient(rgb(10, 66, 255), rgb(11, 199, 255));
     :deep(.van-form){
       padding-bottom: 40px;
         .van-cell-group--inset{
@@ -175,11 +185,11 @@ export default {
             background-color: initial;
         }
         .van-ellipsis{
-          color: #fff;
+          color: #000;
         }
         .van-cell{
             padding: 34px 10px;
-            border-bottom: 1px solid  var(--van-cell-border-color);
+            border-bottom: 1px solid #b2b2b2;
             background-color: initial;
             &.zdy{
               .van-field__left-icon{
@@ -213,7 +223,7 @@ export default {
                 font-size: 24px;
             }
             .van-field__label{
-              color: #fff;
+              color: #000;
             }
             &::after {
                 display: none;
@@ -236,15 +246,10 @@ export default {
         .buttons{
             padding: 0 76px;
             .van-button{
-                font-size: 26px;
+                font-size: 30px;
                 padding: 26px 0;
                 height: auto;
                 margin-top: 40px;
-                &+.van-button{
-                  background-color: rgba(255,255,255, 0.2);
-                  border: none;
-                  color: #fff;
-                }
             }
         }
     }
