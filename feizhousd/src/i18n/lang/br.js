@@ -288,6 +288,32 @@ module.exports = {
 	  refuse: "Recusar",
 	  pass_through: "Passar por",
 	  sqsl: "Quantidade de Solicitação",
-	  confirm: "Confirmar",
+	  confirm: "Confirmado",
+
+sssj: "Dados em tempo real",
+
+viplervel: "Nível VIP",
+
+zxyhzs: "Total de usuários online",
+
+pjyhyhl: "Quantidade média de otimização por usuário",
+
+yhxyrt: "A otimização requer mapas de calor",
+
+pttgyhsl: "Quantidade de otimização de promoção da plataforma",
+
+ckgd: "Ver mais",
+
+shxyh: "Adequado para novos usuários",
+
+mxrwlr: "Lucro por tarefa",
+
+zhzjcg: "Saldo da conta excedido",
+
+mtrwcs: "Contagem diária de tarefas",
+
+wfsyqtgjgn: "Não é possível usar outros recursos avançados",
+
+zshdqlxkflq: "Atividade exclusiva. Entre em contato com o atendimento ao cliente para resgatar"
     }
   }

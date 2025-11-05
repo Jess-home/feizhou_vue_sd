@@ -289,5 +289,18 @@ module.exports = {
 	pass_through: "Pasar a través de",
 	sqsl: "Cantidad de solicitud",
 	confirm: "Confirmado",
+  sssj: "Datos en tiempo real",
+  viplervel: "Nivel VIP",
+  zxyhzs: "Total de usuarios en línea",
+  pjyhyhl: "Cantidad promedio de optimización de usuarios",
+  yhxyrt: "La optimización requiere mapas de calor",
+  pttgyhsl: "Cantidad de optimización de promoción de la plataforma",
+  ckgd: "Ver más",
+  shxyh: "Apto para nuevos usuarios",
+  mxrwlr: "Ganancia por tarea",
+  zhzjcg: "Fondos de la cuenta excedidos",
+  mtrwcs: "Número de tareas diarias",
+  wfsyqtgjgn: "No se pueden usar otras funciones avanzadas",
+  zshdqlxkflq: "Actividad exclusiva. Comuníquese con el servicio al cliente para reclamarla"
   }
 }

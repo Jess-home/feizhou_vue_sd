@@ -20,12 +20,6 @@
         </van-swipe> -->
         <!-- 内容 -->
         <div class="content">
-            <!-- 开始赚钱 -->
-            <!-- <div class="zq">
-                <div class="monney">{{currency}}{{monney}}</div>
-                <div class="text">{{$t('msg.my_yu_e')}}</div>
-            </div>
-            <van-button type="primary" class="kszq" round block  @click="toRoute('/obj')">{{$t('msg.kszq')}}</van-button> -->
             <!-- 次导航 -->
             <div class="earnings mt-2" style="">
                 <div class="earnings_Info">
@@ -37,63 +31,115 @@
                         <span >{{$t('msg.zhye')}}</span><span >{{$t('msg.djje')}}</span>
                     </div>
                     <div class="balance-val d-flex justify-between">
-                        <span >{{currency}}
-                            <span class="mm">{{monney}}</span>
+                        <span >
+                            <span class="mm">{{monney}}{{currency}}</span>
                         </span>
-                        <span >{{currency}}
-                            <span class="mm">{{mInfo.freeze_balance}}</span></span>
+                        <span >
+                            <span class="mm">{{mInfo.freeze_balance}}{{currency}}</span></span>
                     </div>
-                    <div class="count-data">
-                        <div class="flex-full">
-                            <div >{{$t('msg.today_monney')}}</div>
-                            <div >{{currency}}{{mInfo.yon1}}</div>
-                        </div>
-                        <div class="flex-full">
-                            <div >{{$t('msg.zrsy')}}</div>
-                            <div >{{currency}} {{mInfo.Yesterdaysearnings}}</div>
-                        </div>
+                    <!-- 切换按钮：同一行两个按钮 -->
+                    <div class="count-switch">
+                        <van-button class="switch-btn" :class="{active: activeTab===1}" @click="activeTab=1">{{$t('msg.get_m')}}</van-button>
+                        <van-button class="switch-btn" :class="{active: activeTab===2}" @click="activeTab=2">{{$t('msg.zsy')}}</van-button>
                     </div>
+
+                    <!-- 根据选中按钮显示对应内容 -->
                     <div class="count-data">
-                        <div class="flex-full">
-                            <div >{{$t('msg.get_monney')}}</div>
-                            <div class="two">{{currency}}{{mInfo.yon3}}</div>
-                        </div>
-                        <div class="flex-full">
-                            <div >{{$t('msg.tdsy')}}</div>
-                            <div class="two">{{currency}} {{mInfo.Teambenefits}}</div>
-                        </div>
+                        <template v-if="activeTab === 1">
+                            <div class="flex-full">
+                                <div>{{$t('msg.today_monney')}}</div>
+                                <div class="two">{{mInfo.yon1}}</div>
+                            </div>
+                            <div class="flex-full">
+                                <div>{{$t('msg.zrsy')}}</div>
+                                <div class="two">{{mInfo.Yesterdaysearnings}}</div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="flex-full">
+                                <div>{{$t('msg.zsy')}}</div>
+                                <div class="two">{{mInfo.yon3}}</div>
+                            </div>
+                            <div class="flex-full">
+                                <div>{{$t('msg.tdsy')}}</div>
+                                <div class="two">{{mInfo.Teambenefits}}</div>
+                            </div>
+                        </template>
                     </div>
                 </div>
             </div>
             <!-- 次导航 -->
             <div class="n_nav">
-                <div class="li nav" @click="toRoute('/chongzhi')">
+                <div class="li nav" @click="toRoute('/service')">
                     <div class="imge">
-                        <img :src="require('@/assets/images/news/ic_recharge.png')" width="40" height="40" alt="">
+                        <img :src="require('@/assets/images/news/service.png')" width="50" height="50" alt="">
                     </div>
-                    <div class="text" style="color: #8389fb; font-weight: 600;">{{$t('msg.mscz')}}</div>
-                </div>
-                <div class="li nav" @click="toRoute('/drawing',monney,2)">
-                    <div class="imge">
-                        <img :src="require('@/assets/images/news/ic_withdraw.png')" width="40" height="40" alt="">
-                    </div>
-                    <div class="text" style="color: #fb9833; font-weight: 600;">{{$t('msg.kstx')}}</div>
+                    <div class="text">{{$t('msg.tel')}}</div>
                 </div>
                 <div class="li nav" @click="toRoute('/libao',monney)">
                     <div class="imge">
-                        <img :src="require('@/assets/images/news/ic_finance.png')" width="40" height="40" alt="">
+                        <img :src="require('@/assets/images/news/ic_finance.png')" width="50" height="50" alt="">
                     </div>
-                    <div class="text" style="color: #f85355; font-weight: 600;">{{$t('msg.jflc')}}</div>
+                    <div class="text">{{$t('msg.yeb')}}</div>
                 </div>
-                <div class="li nav" @click="toRoute('/share')">
+                <div class="li nav" @click="toRoute('/chongzhi')">
                     <div class="imge">
-                        <img :src="require('@/assets/images/news/ic_invite.png')" width="40" height="40" alt="">
+                        <img :src="require('@/assets/images/news/ic_recharge.png')" width="50" height="50" alt="">
                     </div>
-                    <div class="text" style="color: #3bc180; font-weight: 600;">{{$t('msg.yqhy')}}</div>
+                    <div class="text">{{$t('msg.chongzhi')}}</div>
+                </div>
+                <div class="li nav" @click="toRoute('/drawing',monney,2)">
+                    <div class="imge">
+                        <img :src="require('@/assets/images/news/ic_withdraw.png')" width="50" height="50" alt="">
+                    </div>
+                    <div class="text"
+                    >{{$t('msg.tixian')}}</div>
+                </div>
+                <!-- 公司简介 -->
+                 <div class="li nav" @click="toDetails(2,$t('msg.gsjj'))">
+                    <div class="imge">
+                        <img :src="require('@/assets/images/news/aboult.png')" width="50" height="50" alt="">
+                    </div>
+                    <div class="text"
+                    >{{$t('msg.gsjj')}}</div>
+                </div>
+                <div class="li nav" @click="toDetails(3,$t('msg.gzms'))">
+                    <div class="imge">
+                        <img :src="require('@/assets/images/news/tiaokuan.png')" width="50" height="50" alt="">
+                    </div>
+                    <div class="text"
+                    >{{$t('msg.gzms')}}</div>
+                </div>
+                <div class="li nav" @click="toDetails(4,$t('msg.dlhz'))">
+                    <div class="imge">
+                        <img :src="require('@/assets/images/news/zhengshu.png')" width="50" height="50" alt="">
+                    </div>
+                    <div class="text"
+                    >{{$t('msg.dlhz')}}</div>
+                </div>
+                <div class="li nav" @click="toDetails(12,$t('msg.qyzz'))">
+                    <div class="imge">
+                        <img :src="require('@/assets/images/news/ask.png')" width="50" height="50" alt="">
+                    </div>
+                    <div class="text"
+                    >{{$t('msg.qyzz')}}</div>
                 </div>
             </div>
-            
+             <!-- 信息公告 -->
+            <div class="ftitle">
+                {{$t('msg.sssj')}}
+            </div>
+            <div class="hzhb">
+                <div class="card" v-for="(item, idx) in hzhbItems" :key="idx" :class="idx < 2 ? 'small' : 'large'">
+                    <div class="bg" :style="item.bg ? { backgroundImage: 'url(' + item.bg + ')' } : {}"></div>
+                    <div class="card-content" :class="{ 'text-white': idx===1 || idx===2, 'text-black': idx===0 || idx===3 }">
+                        <div class="card-title">{{ $t(item.title) }}</div>
+                        <div class="card-value">{{ item.value }}</div>
+                    </div>
+                </div>
+            </div>
             <!-- banner图 -->
+            <!-- 原始 hy_box 代码（已注释，保留以供参考）
             <van-row gutter="20" class="hy_box" v-if="hyList.length > 0">
                 <van-col span="12" v-for="item in hyList" :key="item.id" >
                     <div class="box" @click="addLevel(item)">
@@ -117,69 +163,33 @@
                     </div>
                 </van-col>
             </van-row>
-            <!-- 会员收益 -->
-            <!-- <div class="ftitle">
-                {{$t('msg.get_monney')}}
-            </div> -->
-            <!-- <div class="m_nav">
-                <div class="li">
-                    <div class="monney">{{currency}}{{mInfo.yon1}}</div>
-                    <div class="text">{{$t('msg.today_monney')}}</div>
-                </div>
-                <div class="li">
-                    <div class="monney">{{currency}}{{mInfo.yon2}}</div>
-                    <div class="text">{{$t('msg.today_yonj')}}</div>
-                </div>
-                <div class="li">
-                    <div class="monney">{{currency}}{{mInfo.yon3}}</div>
-                    <div class="text">{{$t('msg.get_monney')}}</div>
-                </div>
-                <div class="li">
-                    <div class="monney">{{currency}}{{mInfo.yon4}}</div>
-                    <div class="text">{{$t('msg.ylb')}}</div>
-                </div>
-            </div> -->
-            <!-- 会员收益 -->
-            <div class="ftitle">
-                {{$t('msg.yhyjsrdt')}}
+            -->
+            <div class="ftitle flex-between">
+                <div>{{$t('msg.viplervel')}}</div>
+                <div class="load-more" @click="$router.push('/level')">{{$t('msg.ckgd')}}>></div>
             </div>
-            <vue3-seamless-scroll :list="mInfo.list || []" class="scroll" :waitTime="600" :step="7" :delay="0.5" hover :limitScrollNum="3" :singleHeight="90" >
-                <div class="item" v-for="(item, index) in mInfo.list || []" :key="index">
-                    <span class="left">{{ item.addtime }}</span>
-                    <span class="right">
-                        <span class="t">{{$t('msg.sryj')}}：{{currency}}{{ item.today_income }}</span>
-                        <span class="b">{{item.name.replace(/(.{3}).*(.{3})/,"$1******$2")}}</span>
-                    </span>
+            <!-- 新的横向可滑动卡片（左右滑动，在同一行显示） -->
+            <div class="vip-swiper" v-if="hyList.length > 0">
+                <div class="vip-cards">
+                    <div class="vip-card" v-for="item in hyList" :key="item.id" :style="{ backgroundImage: `url(${vipBg})` }">
+                        <div class="card-top">
+                            <div class="name">{{ item.name }}</div>
+                            <img v-if="item.pic" :src="item.pic" class="thumb" alt="">
+                        </div>
+                        <div class="card-bottom">
+                            <div v-if="item.name == 'VIP1'" class="line">● {{ $t('msg.shxyh')}}</div>
+                            <div v-else class="line">● {{ $t('msg.zhzjcg')}} {{ item.num }} {{ currency }}</div>
+                            <div class="line">● {{ $t('msg.mxrwlr') }} {{((item.bili || 0)*100).toFixed(2)}}%</div>
+                            <div class="line">● {{ $t('msg.mtrwcs') }} {{ item.order_num }}</div>
+                        </div>
+                    </div>
                 </div>
-            </vue3-seamless-scroll>
+            </div>
 
-            <!-- 公司简介 -->
-            <div class="n_nav">
-                <div class="li nav" @click="toDetails(2,$t('msg.gsjj'))">
-                    <img :src="require('@/assets/images/news/poster_1.png')" class="img" alt="">
-                    <div class="text">{{$t('msg.gsjj')}}</div>
-                </div>
-                <div class="li nav" @click="toDetails(3,$t('msg.gzms'))">
-                    <img :src="require('@/assets/images/news/poster_2.png')" class="img" alt="">
-                    <div class="text">{{$t('msg.gzms')}}</div>
-                </div>
-                <div class="li nav" @click="toDetails(4,$t('msg.dlhz'))">
-                    <img :src="require('@/assets/images/news/poster_3.png')" class="img" alt="">
-                    <div class="text">{{$t('msg.dlhz')}}</div>
-                </div>
-                <div class="li nav" @click="toDetails(12,$t('msg.qyzz'))">
-                    <img :src="require('@/assets/images/news/poster_4.png')" class="img" alt="">
-                    <div class="text">{{$t('msg.qyzz')}}</div>
-                </div>
-            </div>
-            <!-- 会员收益 -->
-            <div class="ftitle">
-                {{$t('msg.hzhb')}}
-            </div>
-            <div class="hzhb">
-                <img :src="require('@/assets/images/news/'+num+'.png')" v-for="num in 6" :key="num" class="img" alt="">
-            </div>
+            
+           
         </div>
+        <!-- 系统通知弹窗 -->
         <van-dialog v-model:show="showA" width="90%" :showConfirmButton="false">
             <div class="lang_box">
                 <div class="lang_title">{{$t('msg.System_notification')}}</div>
@@ -200,7 +210,7 @@
     </div>
 </template>
 <script>
-import { ref, getCurrentInstance,reactive } from 'vue';
+import { ref, getCurrentInstance, reactive, onMounted, onUnmounted, onActivated } from 'vue';
 import store from '@/store/index'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router';
@@ -253,6 +263,80 @@ export default {
         // 主info
         const monney = ref('')
         const mInfo = ref({})
+        const activeTab = ref(1)
+        const hzhbItems = ref([
+            { title: 'msg.zxyhzs', value: '764.90K', bg: require('@/assets/images/bg_a.png') },
+            { title: 'msg.pjyhyhl', value: '766.80K', bg: require('@/assets/images/bg_b.png') },
+            { title: 'msg.yhxyrt', value: '762.24K', bg: require('@/assets/images/bg_c.png') },
+            { title: 'msg.pttgyhsl', value: '780.06K', bg: require('@/assets/images/bg_d.png') }
+        ])
+
+        // background for vip cards
+        const vipBg = require('@/assets/images/vip_bg.png')
+
+        // Helper: parse display value like '764.90K' -> { num: 764.90, suffix: 'K' }
+        const parseDisplayValue = (str) => {
+            if (typeof str === 'number') return { num: str, suffix: '' }
+            if (!str) return { num: 0, suffix: '' }
+            const s = String(str).trim()
+            // capture trailing non-digit characters as suffix
+            const match = s.match(/^([\-0-9,.]+)\s*([a-zA-Z%]*)$/)
+            if (!match) return { num: 0, suffix: '' }
+            const numStr = match[1].replace(/,/g, '')
+            const suffix = match[2] || ''
+            const num = parseFloat(numStr) || 0
+            return { num, suffix }
+        }
+
+        const formatDisplay = (num, suffix) => {
+            // keep two decimals
+            return `${Number(num).toFixed(2)}${suffix || ''}`
+        }
+
+        // initialize numeric fields for each item
+        hzhbItems.value.forEach(item => {
+            const p = parseDisplayValue(item.value)
+            item._num = p.num
+            item._suffix = p.suffix
+            // normalize initial display to two decimals
+            item.value = formatDisplay(item._num, item._suffix)
+        })
+
+        // random change between 0.01 and 1.99
+        const randomDelta = () => {
+            return +(Math.random() * (1.99 - 0.01) + 0.01).toFixed(2)
+        }
+
+        let _intervalId = null
+        const applyRandomUpdate = () => {
+            hzhbItems.value.forEach(item => {
+                const delta = randomDelta()
+                // randomly add or subtract
+                const sign = Math.random() < 0.5 ? -1 : 1
+                item._num = +(item._num + sign * delta).toFixed(2)
+                // prevent negative
+                if (item._num < 0) item._num = 0
+                item.value = formatDisplay(item._num, item._suffix)
+            })
+        }
+
+        onMounted(() => {
+            // immediate update when component is first mounted / displayed
+            applyRandomUpdate()
+            // update once every 60s
+            _intervalId = setInterval(() => {
+                applyRandomUpdate()
+            }, 60 * 1000)
+        })
+
+        // if component is wrapped in <keep-alive>, also update when activated
+        onActivated(() => {
+            applyRandomUpdate()
+        })
+
+        onUnmounted(() => {
+            if (_intervalId) clearInterval(_intervalId)
+        })
 
         getHomeData().then(res => {
             if(res.code === 0) {
@@ -265,7 +349,8 @@ export default {
             get_level_list().then(res => {
                 console.log(res)
                 if(res.code === 0) {
-                    hyList.value = res.data
+                    // ensure each item has optional text lines for the new card bottom
+                    hyList.value = (res.data || []).map(i => ({ ...i, line1: i.line1 || '', line2: i.line2 || '', line3: i.line3 || '' }))
                 }
             })
         }
@@ -301,7 +386,7 @@ export default {
                 push('/addlevel?vip='+row.id)
             }
         }
-        return {banner,monney,hyList,mInfo,currency,toRoute,addLevel,toDetails,a_content,showA,logo,userinfo,setHeight,app_name}
+    return {banner,monney,hyList,mInfo,currency,toRoute,addLevel,toDetails,a_content,showA,logo,userinfo,setHeight,app_name,activeTab,hzhbItems,vipBg}
     }
 }
 </script>
@@ -518,6 +603,7 @@ export default {
                 .monney{
                     font-size: 50px;
                     background-image:-webkit-linear-gradient(left,#a570fb,#2620ce); 
+                    background-clip: text;
                     -webkit-background-clip:text; 
                     -webkit-text-fill-color:transparent; 
                     font-weight: 600;
@@ -565,28 +651,26 @@ export default {
             .li{
                 text-align: center;
                 &.nav{
-                    width: 48%;
+                    width: 25%;
                     text-align: left;
                     margin-bottom: 24px;
-                    padding: 24px 0 24px 24px;
+                    padding: 20px 0;
                     border-radius: 12px;
                     background-color: #fff;
                     display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
                     .text{
-                        margin-left: 15px;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-around;
                         font-size: 26px;
                     }
                     .imge{
-                        width: 40PX;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
-                    }
-                    .img{
-                        width: 40PX;
                     }
                 }
                 .img{
@@ -603,24 +687,30 @@ export default {
         .ftitle{
             height: 34px;
             line-height: 34px;
-            font-size: 30px;
+            font-size: 40px;
             color: #333;
-            margin: 40px 0;
+            margin: 40px 0px;
             white-space: nowrap;
-            &::before{
-                content: '';
-                display: inline-block;
-                height: 100%;
-                width: 10px;
-                margin-right: 12px;
-                background-color: $theme;
-                vertical-align: middle;
+            font-weight: 900;
+            &.flex-between {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .load-more {
+                font-size: 28px;
+                color: #666;
+                font-weight: normal;
+                cursor: pointer;
+                &:hover {
+                    color: #1a7ae7;
+                }
             }
         }
         .earnings{
             background: url('~@/assets/images/news/balance_bg.png') no-repeat;
             background-size: 100% 100%;
-            padding: 24px;
+            padding: 54px 34px;
             margin-bottom: 24px;
             .vip_level{
                 height: 30px;
@@ -646,19 +736,18 @@ export default {
                 }
             }
             .balance{
-                margin: 20px 0;
-                font-size: 30px;
-                // font-weight: 500;
-                color: #000;
+                margin: 20px 0 1px;
+                font-size: 36px;
+                font-weight: 900;
+                color: #fff;
                 display: flex;
                 justify-content: space-between;
             }
             .balance-val{
-                margin: 10px 0 15px;
-                font-size: 50px;
+                font-size: 40px;
                 font-family: PingFangSC-Semibold,PingFang SC;
-                font-weight: 600;
-                color: #000;
+                font-weight: 900;
+                color: #fdb824;
                 display: flex;
                 justify-content: space-between;
                 span{
@@ -670,15 +759,45 @@ export default {
             }
             .count-data{
                 display: flex;
-                margin-top: 15px;
+                margin-top: 20px;
+                gap:20px;
                 .flex-full{
-                    flex: 1;
-                    color: #000;
-                    font-size: 24px;
+                    color: #ffffff;
+                    font-size: 28px; 
                     .two{
                         display: block;
-                        font-weight: 600;
+                        font-weight: 900;
+                        font-size:34px
                     }
+                }
+                .flex-full:not(:first-child) {
+                    border-left: 3px solid white;  /* 只有中间和右侧的加线 */
+                    padding-left: 20px;
+                }
+
+                    /* 右边项不加额外内边距（可选） */
+                .flex-full:not(:last-child) {
+                    padding-right: 15px;
+                }
+            }
+            .count-switch{
+                margin-top: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start; /* 靠左排列 */
+                gap: 16px; /* 间隔 */
+                .van-button{
+                    height: 44px;
+                    border-color: #fff;
+                    background: #1a7ae7;
+                    color: #fff;
+                    padding: 10px;
+                    font-weight: 900;
+                }
+                .van-button.active{
+                    background: #ffffff;
+                    color: #fff;
+                    color: #1a7ae7;
                 }
             }
         }
@@ -701,6 +820,7 @@ export default {
                 .monney{
                     font-size: 30px;
                     background-image:-webkit-linear-gradient(left,#856cf0,#a35df1); 
+                    background-clip: text;
                     -webkit-background-clip:text; 
                     -webkit-text-fill-color:transparent; 
                     font-weight: 600;
@@ -750,14 +870,129 @@ export default {
         }
         .hzhb{
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
-            .img{
-                width: 210px;
+            gap: 20px;
+            justify-content: space-between;
+            .card{
+                width: calc(50% - 10px);
+                position: relative;
+                border-radius: 30px;
+                overflow: hidden;
                 box-shadow: $shadow;
-                border-radius: 10px;
-                margin-bottom: 30px;
+                background-color: transparent; /* 取消白色遮罩，显示背景图 */
+                .bg{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    background-size: cover;
+                    background-position: center;
+                    opacity: 1; /* 不透明显示图片颜色 */
+                    filter: none;
+                }
+                &.small{
+                    height: 140px;
+                }
+                &.large{
+                    height: 340px;
+                }
+                .card-content{
+                    position: relative;
+                    z-index: 2;
+                    padding: 20px;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column; /* 上下排列 */
+                    align-items: flex-start; /* 左对齐文本 */
+                    gap: 8px;
+                    .card-title{
+                        font-size: 24px; /* 字体变大 */
+                        font-weight: 700;
+                    }
+                    .card-value{
+                        font-size: 40px; /* 字体变大 */
+                        font-weight: 900;
+                    }
+                }
+                /* 文字颜色变体 */
+                .text-white{
+                    .card-title,
+                    .card-value{
+                        color: rgba(255,255,255,0.95);
+                        text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+                    }
+                }
+                .text-black{
+                    .card-title,
+                    .card-value{
+                        color: rgba(0,0,0,0.9);
+                        text-shadow: none;
+                    }
+                }
             }
+        }
+        /* 横向可滑动 VIP 卡片 */
+        .vip-swiper{
+            margin-top: 40px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+        .vip-cards{
+            display: flex;
+            gap: 32px;
+            align-items: stretch;
+        }
+        .vip-card{
+            min-width: 520px; /* 原260px的2倍 */
+            height: 520px; /* 原360px的2倍 */
+            flex: 0 0 auto;
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: $shadow;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .vip-card .card-top{
+            padding: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            align-items: center;
+        }
+        .vip-card .name{
+            color: #fff;
+            font-size: 44px; /* 原22px的2倍 */
+            font-weight: 800;
+        }
+        .vip-card .thumb{
+            width: 112px; /* 原56px的2倍 */
+            height: 112px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .vip-card .card-bottom{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 32px;
+            background: #ffffff63; /* 半透明涂层 */
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .vip-card .card-bottom .line{
+            font-size: 28px; /* 原14px的2倍 */
+            line-height: 1.4;
+            font-weight: 500;
         }
     }
 </style>

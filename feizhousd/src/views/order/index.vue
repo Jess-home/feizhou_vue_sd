@@ -324,7 +324,7 @@ export default {
 	line-height: 82px;
 }
 .order{
-    padding: calc(var(--van-nav-bar-height) + 30px) 0 0;
+    //padding: calc(var(--van-nav-bar-height) + 30px) 0 0;
     background-color: #f1f1f1;
     :deep(.van-nav-bar){
         background-color: #d4dff5;

@@ -4,11 +4,6 @@
             <img :src="loadImg" class="img" alt="">
             <div>{{loadText}}</div>
         </div>
-        <van-nav-bar @click-right="clickRight">
-            <template #right>
-                <img :src="require('@/assets/images/self/hank/tel.png')" class="img" height="25" alt="">
-            </template>
-        </van-nav-bar>
         <div class="content">
             <div class="money">
                 <div class="left">
@@ -314,11 +309,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .obj{
-    background-color: $theme;
     display: flex;
     flex-direction: column;
     padding-bottom: 0 !important;
-    padding-top: calc(var(--van-nav-bar-height) + 20px);
     .content{
         flex: 1;
         // margin-top: 30px;

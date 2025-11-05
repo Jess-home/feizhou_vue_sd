@@ -13,6 +13,16 @@ const routes = [
     component: ()=> import('@/views/login/register.vue')
   },
   {
+    path: '/service',
+    name: 'service',
+    component: ()=> import('@/views/tel/service.vue')
+  },
+  {
+    path: '/level',
+    name: 'level',
+    component: ()=> import('@/views/index/level.vue')
+  },
+  {
     path: '/',
     name: 'index',
     component: ()=> import('@/views/index/index.vue'),
@@ -258,7 +268,7 @@ router.beforeEach((to, from, next) => {
   // 2. 要合理的搭配条件语句，避免出现路由死循环。
   var token = localStorage.getItem('token')
   console.log(to)
-  if (to.name == 'home' || to.name == 'login' || to.name == 'register') {
+  if (to.name == 'home' || to.name == 'login' || to.name == 'register' || to.name == 'service') {
     next()
   } else if (!token) {
     next('/login')

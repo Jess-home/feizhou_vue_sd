@@ -65,9 +65,9 @@ export default {
         // background-size: 100% 100%;
         position: fixed;
         width: 100%;
-        bottom: -7px;
+        bottom: -18px;
         left: 0;
-        padding: 0 0 10px;
+        padding: 0;
         z-index: 999;
         background: #fff;
         filter: drop-shadow(0 0 4px #bbb);
@@ -79,19 +79,19 @@ export default {
                 width: auto;
                 position: relative;
                 padding-top: 0;
-                margin-top: -50px;
+                margin-top: -35px;
                 .span{
                     // position: absolute;
                     // left: 0;
                     // top: 0;
                     // transform: translateY(-50%);
-                    background: #fff;
-                    border-radius: 50%;
+                    background: #ffffff00;
+                    //border-radius: 50%;
                     padding: 5px;
-                    height: 300px;
+                    height: 220px;
                     .img{
-                        height: 120px;
-                        width: 120px;
+                        height: 100px;
+                        width: 100px;
                     }
                 }
             }
@@ -108,7 +108,7 @@ export default {
                     margin: 0 auto 10px;
                 }
                 .text{
-                    font-size: 24px;
+                    font-size: 26px;
                     color: #a19fa8;
                     // margin-top: -10px;
                     // position: absolute;
@@ -118,10 +118,10 @@ export default {
                     //width: 80PX;
                     white-space: wrap;
                     line-height: 1;
-                    margin-bottom: 5px;
+                    //margin-bottom: 5px;
                     // height: 55px;
                     &.check{
-                        color: #44a8ff;
+                        color: #2c7ce7;
                     }
                 }
             }

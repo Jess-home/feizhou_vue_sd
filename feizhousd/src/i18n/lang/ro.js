@@ -288,6 +288,19 @@ module.exports = {
 	  refuse: "Refuz",
 	  pass_through: "Trecut",
 	  sqsl: "Cantitatea cererii",
-	  confirm: "Confirmare",
+	  confirm: "Confirmat",
+    sssj: "Date în timp real",
+    viplervel: "Nivel VIP",
+    zxyhzs: "Număr total de utilizatori online",
+    pjyhyhl: "Cantitate medie de optimizare a utilizatorilor",
+    yhxyrt: "Optimizarea necesită hărți termice",
+    pttgyhsl: "Cantitate de optimizare a promovării platformei",
+    ckgd: "Vezi mai multe",
+    shxyh: "Potrivit pentru utilizatori noi",
+    mxrwlr: "Profit per sarcină",
+    zhzjcg: "Fonduri cont depășite",
+    mtrwcs: "Număr zilnic de sarcini",
+    wfsyqtgjgn: "Nu se pot utiliza alte funcții avansate",
+    zshdqlxkflq: "Activitate exclusivă, vă rugăm să contactați Serviciul Clienți pentru a revendica"
     }
   }

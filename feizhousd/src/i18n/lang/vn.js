@@ -289,6 +289,19 @@ module.exports = {
 	refuse: "Từ chối",
 	pass_through: "Qua mặt",
 	sqsl: "Số lượng đơn đăng ký",
-	confirm: "Xác nhận",
+	confirm: "Đã xác nhận",
+  sssj: "Dữ liệu thời gian thực",
+  viplervel: "Cấp VIP",
+  zxyhzs: "Tổng số người dùng trực tuyến",
+  pjyhyhl: "Số lượng người dùng tối ưu hóa trung bình",
+  yhxyrt: "Yêu cầu bản đồ nhiệt để tối ưu hóa",
+  pttgyhsl: "Số lượng quảng cáo tối ưu hóa nền tảng",
+  ckgd: "Xem thêm",
+  shxyh: "Phù hợp cho người dùng mới",
+  mxrwlr: "Lợi nhuận trên mỗi nhiệm vụ",
+  zhzjcg: "Đã vượt quá số dư tài khoản",
+  mtrwcs: "Số lượng nhiệm vụ hàng ngày",
+  wfsyqtgjgn: "Không thể sử dụng các tính năng nâng cao khác",
+  zshdqlxkflq: "Hoạt động độc quyền, vui lòng liên hệ bộ phận Chăm sóc Khách hàng để yêu cầu"
   }
 }

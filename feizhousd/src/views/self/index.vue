@@ -174,9 +174,9 @@ export default {
 .self{
     overflow: auto;
     display: block !important;
-    padding: calc(var(--van-nav-bar-height) + 20px) 24px 0;
+    //padding: calc(var(--van-nav-bar-height) + 20px) 24px 0;
     .van-nav-bar{
-        //background:#d4dff5;
+        background:#d4dff5;
         left: 0;
     }
     .top{

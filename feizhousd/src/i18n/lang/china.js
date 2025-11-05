@@ -198,5 +198,18 @@ module.exports = {
 	  pass_through: "通过",
 	  sqsl: "申请数量",
 	  confirm: "确认",
+    sssj: "实时数据",
+    viplervel: "VIP等级",
+    zxyhzs: "在线用户总数",
+    pjyhyhl: "平均用户优化量",
+    yhxyrt: "优化需要热图",
+    pttgyhsl: "平台推广优化数量",
+    ckgd: "查看更多",
+    shxyh: "适合新用户",
+    mxrwlr: "每项任务利润",
+    zhzjcg: "账户资金超过",
+    mtrwcs: "每天任务次数",
+    wfsyqtgjgn: "无法使用其他高级功能",
+    zshdqlxkflq: "专属活动，请联系客服领取"
     }
   }

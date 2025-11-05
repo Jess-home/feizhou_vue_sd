@@ -288,6 +288,33 @@ module.exports = {
 		refuse: "Refuse",
 		pass_through: "Pass Through",
 		sqsl: "Application Quantity",
-		confirm: "Confirm",
+		confirm: "Confirmed",
+
+sssj: "Real-time Data",
+
+viplervel: "VIP Level",
+
+zxyhzs: "Total Online Users",
+
+pjyhyhl: "Average User Optimization Quantity",
+
+yhxyrt: "Optimization Requires Heatmaps",
+
+pttgyhsl: "Platform Promotion Optimization Quantity",
+
+ckgd: "View More",
+
+shxyh: "Suitable for New Users",
+
+mxrwlr: "Profit Per Task",
+
+zhzjcg: "Account Funds Exceeded",
+
+mtrwcs: "Daily Task Count",
+
+wfsyqtgjgn: "Unable to Use Other Advanced Features",
+
+zshdqlxkflq: "Exclusive Activity, Please Contact Customer Service to Claim"
+
 	}
 }

@@ -8,7 +8,7 @@
         </van-nav-bar>
         <!-- <img :src="require('@/assets/images/tel/bg.png')" alt="" class="bg"> -->
         <div class="bg">
-            <span class="span">{{$t('msg.kffw')}}</span>
+            <!-- <span class="span">{{$t('msg.kffw')}}</span> -->
             <!-- <span class="span" @click="toTel()">{{$t('msg.kffw')}}</span> -->
         </div>
         <div class="tent">
@@ -59,10 +59,11 @@ export default {
 .tel{
     .van-nav-bar{
         width: 100%;
+        background-color: $theme;
     }
     .bg{
         width: 100vw;
-        height: 360px;
+        height: 260px;
         background-color: $theme;
         display: flex;
         flex-direction: column;

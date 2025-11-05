@@ -101,6 +101,7 @@ export default {
 <style lang="scss" scoped>
 .self{
     overflow: auto;
+    gap: 30px;
     :deep(.van-nav-bar){
         background-color: $theme;
         // position: absolute;
