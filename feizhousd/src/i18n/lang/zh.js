@@ -304,6 +304,9 @@ module.exports = {
     zshdqlxkflq: "专属活动，请联系客服领取",
     xyf: "信用分",
     wdcw: "我的财务",
-    qita: "其它"
+    qita: "其它",
+    zichan: "资产",
+    dianjifabiaopinglun: "点击发表评论",
+    zidongpinglun: "自动评论"
     }
   }

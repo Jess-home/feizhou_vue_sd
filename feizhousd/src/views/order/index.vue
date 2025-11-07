@@ -127,6 +127,38 @@
                     </div>
                 </div>
             </div>
+            <div class="pinglun">
+                <div class="pingluna">
+                    <div>
+                        {{ $t('msg.dianjifabiaopinglun') }}
+                    </div>
+                    <div>
+                        <van-rate
+                        v-model="pinglun"
+                        :size="20"
+                        color="#ffd21e"
+                        void-icon="star"
+                        void-color="#eee"
+                        />
+                    </div>
+                </div>
+                <div class="pinglunb">
+                    <van-cell-group inset>
+                        <van-field
+                            v-model="pingluntext"
+                            rows="2"
+                            type="textarea"
+                            placeholder=""
+                            :required="true"
+                            :center="true"
+                        >
+                        <template #button>
+                            <van-button @click="generateRandomComment" size="mini" color="#ff9800">{{ $t('msg.zidongpinglun') }}</van-button>
+                            </template>
+                        </van-field>
+                    </van-cell-group>
+                </div>
+            </div>
         </van-dialog>
     </div>
 </template>
@@ -149,6 +181,8 @@ export default {
         const showConfirm = ref(false)
         const nowTime = ref(new Date().getTime())
         const currency = ref(store.state.baseInfo?.currency)
+        const pinglun = ref(0)
+        const pingluntext = ref('')
         store.dispatch('changefooCheck','order')
         
         const countTime = (start,end) => { 
@@ -256,7 +290,9 @@ export default {
             }
             let json = {
                 oid: id,
-                status: 1
+                status: 1,
+                pingfen: pinglun.value,
+                pinglun: pingluntext.value
             }
             do_order(json).then(res => {
                 if(res.code === 0) {
@@ -283,6 +319,33 @@ export default {
                 }
             })
         }
+        const generateRandomComment = () => {
+            const comments = [
+                "I absolutely love this product! It exceeded my expectations.",
+                "Excellent quality and great value for money.",
+                "This is exactly what I was looking for. Highly recommended!",
+                "The quality is outstanding and it works perfectly.",
+                "Very satisfied with my purchase. Will buy again!",
+                "This product is amazing and worth every penny.",
+                "Fast shipping and the product is even better than described.",
+                "I'm really impressed with the quality and performance.",
+                "This has made my life so much easier. Thank you!",
+                "Great product with excellent craftsmanship.",
+                "Better than I expected! The quality is superb.",
+                "I would definitely recommend this to my friends.",
+                "Perfect in every way. No complaints at all!",
+                "The attention to detail is remarkable.",
+                "This product is a game-changer! So glad I bought it.",
+                "High-quality materials and excellent workmanship.",
+                "Exceeded my expectations in every aspect.",
+                "I'm very happy with this purchase. It's fantastic!",
+                "Well designed and very functional. Love it!",
+                "This is by far the best product I've bought this year."
+            ];
+            
+            const randomIndex = Math.floor(Math.random() * comments.length);
+            pingluntext.value = comments[randomIndex];
+    };
         initData()
         // watch(fooCheck,(newValue)=>{
         //     console.log("新值是"+newValue);
@@ -307,7 +370,10 @@ export default {
             confirmPwd,
             countTime,
             showConfirm,
-            toTei
+            toTei,
+            pinglun,
+            pingluntext,
+            generateRandomComment
       }
     }
 }
@@ -322,6 +388,7 @@ export default {
     //padding: calc(var(--van-nav-bar-height) + 30px) 0 0;
     background-color: #f1f1f1;
     margin-top: 50px;
+    margin-bottom: 100px;
     :deep(.van-nav-bar){
         background-color: #d4dff5;
     }
@@ -355,7 +422,7 @@ export default {
         .list{
             padding: 0 40px;
             box-shadow: none;
-            max-height: 60vh;
+            max-height: 40vh;
             overflow: auto;
             display: flex;
             flex-direction: column;
@@ -491,5 +558,28 @@ export default {
         height: auto;
     }
     
+}
+.pinglun{
+    margin: 20px 30px;
+    margin-bottom: 0px;
+    font-size: 26px;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 900;
+    .pingluna{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .pinglunb{
+        margin-top: 20px;
+            width: 90%;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    }
 }
 </style>

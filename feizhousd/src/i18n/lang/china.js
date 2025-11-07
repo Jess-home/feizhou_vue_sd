@@ -211,6 +211,10 @@ module.exports = {
     mtrwcs: "每天任务次数",
     wfsyqtgjgn: "无法使用其他高级功能",
     zshdqlxkflq: "专属活动，请联系客服领取",
-    xyf: "信用分"
+    xyf: "信用分",
+    zichan: "资产",
+    qita: "其它",
+    dianjifabiaopinglun: "点击发表评论",
+    zidongpinglun: "自动评论"
     }
   }

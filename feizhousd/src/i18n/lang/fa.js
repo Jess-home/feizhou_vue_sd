@@ -304,6 +304,9 @@ module.exports = {
   zshdqlxkflq: "Hoạt động độc quyền, vui lòng liên hệ bộ phận Chăm sóc Khách hàng để yêu cầu",
   xyf: "درجة الائتمان",
   wdcw: "امور مالی من",
-  qita: "دیگر"
+  qita: "دیگر",
+  zichan: "دارایی‌ها",
+  dianjifabiaopinglun: "برای نظر دادن کلیک کنید",
+  zidongpinglun: "نظر خودکار"
     }
   }

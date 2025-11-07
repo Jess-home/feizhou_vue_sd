@@ -1,15 +1,12 @@
 <template>
     <div class="home_box">
         <router-view class="pore" @hideFooter="hideFooter"/>
-        <footer-demo></footer-demo>
     </div>
     
 </template>
 <script>
 import {ref} from 'vue'
-import footerDemo from '@/components/footer.vue'
 export default {
-    components:{footerDemo},
     setup(){
         const showFooter = ref(true)
         console.log(showFooter.value)

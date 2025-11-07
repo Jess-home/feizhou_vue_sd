@@ -14,6 +14,9 @@ const user = localStorage.getItem('user')
 const xtTime = localStorage.getItem('xtTime')
 // 抢单界面数据
 const objInfo = localStorage.getItem('objInfo')
+// 钱包数据缓存
+const minfo = localStorage.getItem('minfo')
+
 export default createStore({
   state: {
     lang,
@@ -29,6 +32,7 @@ export default createStore({
     baseInfo: baseInfo ? JSON.parse(baseInfo) : {},
     userinfo: userinfo ? JSON.parse(userinfo) : {},
     user: user ? JSON.parse(user) : {},
+    minfo: minfo ? JSON.parse(minfo) : {},
   },
   getters: {
   },
@@ -69,6 +73,10 @@ export default createStore({
       state.user = {...value}
       localStorage.setItem('user',JSON.stringify(value))
     },
+    setminfo(state,value){
+      state.minfo = {...value}
+      localStorage.setItem('minfo',JSON.stringify(value))
+    },
     deluser(state,value){
       state.user = {}
       localStorage.setItem('user', '')
@@ -82,6 +90,10 @@ export default createStore({
     changextTime(context,params){  //context是一个对象，从它里面把咱们需要的commit方法解构出来
         let {commit} = context
         commit('setxtTime',params)
+    },
+    changeminfo(context,params){  //context是一个对象，从它里面把咱们需要的commit方法解构出来
+        let {commit} = context
+        commit('setminfo',params)
     },
     changeUser(context,params){  //context是一个对象，从它里面把咱们需要的commit方法解构出来
         let {commit} = context

@@ -303,6 +303,9 @@ module.exports = {
   mtrwcs: "Số lượng nhiệm vụ hàng ngày",
   wfsyqtgjgn: "Không thể sử dụng các tính năng nâng cao khác",
   zshdqlxkflq: "Hoạt động độc quyền, vui lòng liên hệ bộ phận Chăm sóc Khách hàng để yêu cầu",
-  xyf: "Điểm tín dụng"
+  xyf: "Điểm tín dụng",
+  zichan: "Tài sản",
+  dianjifabiaopinglun: "Nhấp để bình luận",
+  zidongpinglun: "Bình luận tự động"
   }
 }

@@ -10,7 +10,7 @@
                         <van-image :src="require('@/assets/images/news/users.png')" class="hc-avatar" fit="cover" />
                         <div class="hc-meta">
                             <div class="hc-name">{{ userinfo.tel }}
-                                <img v-if="userinfo.level" :src="require('@/assets/images/self/vip'+ userinfo.level +'.png')" class="vip" alt="">
+                                <img v-if="userinfo.level" :src="require('@/assets/images/self/vip'+ level +'.png')" class="vip" alt="">
                             </div>
                             
                             <div class="hc-score-label">
@@ -35,10 +35,10 @@
                     </div>
                     <div class="balance-val d-flex justify-between">
                         <span >
-                            <span class="mm">{{info.uinfo?.balance_format || 0.00}}{{currency}}</span>
+                            <span class="mm">{{monney}}{{currency}}</span>
                         </span>
                         <span >
-                            <span class="mm">{{info.lock_deal || 0.00}}{{currency}}</span></span>
+                            <span class="mm">{{mInfo.freeze_balance}}{{currency}}</span></span>
                     </div>
                     <!-- 切换按钮：同一行两个按钮 -->
                     <div class="count-switch">
@@ -73,8 +73,8 @@
             </div>
             <div class="vipinfo">
                 <div class="vipimg">
-                    <img v-if="userinfo.level" :src="require('@/assets/images/self/vip'+ userinfo.level +'.png')" class="vip" alt="">
-                    VIP  {{ userinfo.level }} ({{info.day_completed_count || 0}}/{{info.order_num || 0}})
+                    <img v-if="level" :src="require('@/assets/images/self/vip'+ level +'.png')" class="vip" alt="">
+                    VIP  {{ level }} ({{info.day_completed_count || 0}}/{{info.order_num || 0}})
                 </div>
                 <div class="vipright">
                     {{ $t('msg.get_monney') }}: {{(info.level_info?.bili*100 || 0).toFixed(1)}}%
@@ -186,6 +186,38 @@
                     </div>
                 </div>
             </div>
+            <div class="pinglun">
+                <div class="pingluna">
+                    <div>
+                        {{ $t('msg.dianjifabiaopinglun') }}
+                    </div>
+                    <div>
+                        <van-rate
+                        v-model="pinglun"
+                        :size="20"
+                        color="#ffd21e"
+                        void-icon="star"
+                        void-color="#eee"
+                        />
+                    </div>
+                </div>
+                <div class="pinglunb">
+                    <van-cell-group inset>
+                        <van-field
+                            v-model="pingluntext"
+                            rows="2"
+                            type="textarea"
+                            placeholder=""
+                            :required="true"
+                            :center="true"
+                        >
+                        <template #button>
+                            <van-button @click="generateRandomComment" size="mini" color="#ff9800">{{ $t('msg.zidongpinglun') }}</van-button>
+                            </template>
+                        </van-field>
+                    </van-cell-group>
+                </div>
+            </div>
         </van-dialog>
     </div>
 </template>
@@ -193,7 +225,7 @@
 import { ref,getCurrentInstance, reactive, computed} from 'vue';
 import {rot_order,submit_order,order_info,do_order} from '@/api/order/index'
 import store from '@/store/index'
-import {getdetailbyid} from '@/api/home/index.js'
+import {getdetailbyid,getHomeData} from '@/api/home/index.js'
 import {formatTime} from '@/api/format.js'
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n'
@@ -209,13 +241,18 @@ export default {
         const loading = ref(false)
         const loadText = ref('')
         const loadImg = ref('')
+        const level = ref(store.state.minfo?.level || 0)
         const currency = ref(store.state.baseInfo?.currency)
         const info = ref(store.state.objInfo)
-        const creditPercent = ref(100)
+        const pinglun = ref(0)
+        const pingluntext = ref('')
+        const creditPercent = ref(store.state.minfo?.credit || 0)
     // earnings related (copied/adapted from home.vue)
     const activeTab = ref(1)
-    const monney = computed(() => info.value?.uinfo?.balance_format || '')
-    const mInfo = computed(() => info.value || {})
+    // 主info
+        const monney = ref(store.state.minfo?.balance)
+    const mInfo = ref(store.state.minfo)
+
         const onceinfo = ref({})
         const showTj = ref(false)
         const content = ref('')
@@ -246,11 +283,13 @@ export default {
         initData()
         const tjOrder = (row) => {
             order_info({id: row.oid}).then(res => {
+            //order_info({id: 'UB2511071853326364'}).then(res => {
                 loading.value = false
                 onceinfo.value = {...res}
                 showTj.value = true
             })
         }
+        //tjOrder()
 
         const confirmPwd = () => {
             let id = ''
@@ -262,7 +301,9 @@ export default {
             }
             let json = {
                 oid: id,
-                status: 1
+                status: 1,
+                pingfen: pinglun.value,
+                pinglun: pingluntext.value
             }
             do_order(json).then(res => {
                 if(res.code === 0) {
@@ -304,6 +345,16 @@ export default {
         getsupport().then(res => {
             if(res.code === 0) {
                 support.value = res.data[0]?.url
+            }
+        })
+
+        getHomeData().then(res => {
+            if(res.code === 0) {
+                monney.value = res.data.balance
+                mInfo.value = {...res.data}
+                creditPercent.value = res.data.credit
+                level.value = res.data.level
+                store.dispatch('changeminfo',res.data || {})
             }
         })
 
@@ -358,7 +409,34 @@ export default {
                 document.body.removeChild(ta)
             }
         }
-    return {info,currency,level_show,loading,getDd,clickRight,confirmPwd,tjOrder,showTj,onceinfo,formatTime,cancelPwd,content, loadText,status_list,loadImg,activeTab,monney,mInfo, userinfo,creditPercent,copyInvite, qiangdanMp4}
+    const generateRandomComment = () => {
+    const comments = [
+        "I absolutely love this product! It exceeded my expectations.",
+        "Excellent quality and great value for money.",
+        "This is exactly what I was looking for. Highly recommended!",
+        "The quality is outstanding and it works perfectly.",
+        "Very satisfied with my purchase. Will buy again!",
+        "This product is amazing and worth every penny.",
+        "Fast shipping and the product is even better than described.",
+        "I'm really impressed with the quality and performance.",
+        "This has made my life so much easier. Thank you!",
+        "Great product with excellent craftsmanship.",
+        "Better than I expected! The quality is superb.",
+        "I would definitely recommend this to my friends.",
+        "Perfect in every way. No complaints at all!",
+        "The attention to detail is remarkable.",
+        "This product is a game-changer! So glad I bought it.",
+        "High-quality materials and excellent workmanship.",
+        "Exceeded my expectations in every aspect.",
+        "I'm very happy with this purchase. It's fantastic!",
+        "Well designed and very functional. Love it!",
+        "This is by far the best product I've bought this year."
+    ];
+    
+    const randomIndex = Math.floor(Math.random() * comments.length);
+    pingluntext.value = comments[randomIndex];
+    };
+    return {pingluntext,generateRandomComment,pinglun,info,currency,level,level_show,loading,getDd,clickRight,confirmPwd,tjOrder,showTj,onceinfo,formatTime,cancelPwd,content, loadText,status_list,loadImg,activeTab,monney,mInfo, userinfo,creditPercent,copyInvite, qiangdanMp4}
     }
 }
 </script>
@@ -727,11 +805,12 @@ export default {
             text-align: left;
             padding: 20px 40px;
             font-weight: 600;
+            
         }
             .list{
                 padding: 0 40px;
                 box-shadow: none;
-                max-height: 60vh;
+                max-height: 40vh;
                 overflow: auto;
                 display: flex;
                 flex-direction: column;
@@ -760,6 +839,10 @@ export default {
                         color: #fff;
                     }
                 }
+            }
+            .van-dialog__content{
+                max-height: 60vh;
+                overflow: auto;
             }
             .van-dialog__footer{
                 margin-top: 40px;
@@ -842,5 +925,28 @@ export default {
         border-radius: 12px;
     }
     z-index: 888;
+}
+.pinglun{
+    margin: 20px 30px;
+    margin-bottom: 0px;
+    font-size: 26px;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 900;
+    .pingluna{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .pinglunb{
+        margin-top: 20px;
+            width: 90%;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    }
 }
 </style>

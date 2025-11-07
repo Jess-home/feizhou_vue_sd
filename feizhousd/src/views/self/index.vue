@@ -8,7 +8,7 @@
                         <van-image :src="require('@/assets/images/news/users.png')" class="hc-avatar" fit="cover" />
                         <div class="hc-meta">
                             <div class="hc-name">{{ userinfo.tel }}
-                                <img v-if="userinfo.level" :src="require('@/assets/images/self/vip'+ userinfo.level +'.png')" class="vip" alt="">
+                                <img v-if="level" :src="require('@/assets/images/self/vip'+ level +'.png')" class="vip" alt="">
                             </div>
                             
                             <div class="hc-score-label">
@@ -204,11 +204,12 @@ export default {
         const upload = ref(null)
         const currency = ref(store.state.baseInfo?.currency)
         const userinfo = ref(store.state.userinfo)
-    const monney = ref('')
-    const mInfo = ref({})
+    const monney = ref(store.state.minfo?.balance)
+    const mInfo = ref(store.state.minfo)
+    const level = ref(store.state.minfo?.level || 0)
     const activeTab = ref(1)
     // credit score and invite code (you can set these values later)
-    const creditPercent = ref(100)
+    const creditPercent = ref(store.state.minfo?.credit || 0)
     const inviteCode = ref('TPIAA')
         const is_bind = ref(false)
         store.dispatch('changefooCheck','self')
@@ -292,6 +293,8 @@ export default {
                 if(res.code === 0) {
                     monney.value = res.data.balance
                     mInfo.value = {...res.data}
+                    creditPercent.value = res.data.credit
+                    store.dispatch('changeminfo',res.data || {})
                 }
             })
         })
@@ -364,7 +367,7 @@ export default {
                 document.body.removeChild(ta)
             }
         }
-        return {currency,list,qitalist,tuichu,setAvatar,toShare,toRoute,afterRead,upload,clickRight,userinfo,monney,mInfo,activeTab,creditPercent,inviteCode,copyInvite}
+        return {currency,level,list,qitalist,tuichu,setAvatar,toShare,toRoute,afterRead,upload,clickRight,userinfo,monney,mInfo,activeTab,creditPercent,inviteCode,copyInvite}
     }
 }
 </script>

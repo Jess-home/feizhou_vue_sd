@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <van-nav-bar :title="$t('msg.lcb')" left-arrow @click-left="$router.go(-1)" @click-right="clickRight">
+    <van-nav-bar title="Web3" left-arrow @click-left="$router.go(-1)" @click-right="clickRight">
         <template #right>
             {{$t('msg.record')}}
         </template>
@@ -13,7 +13,7 @@
                     <span class="value">{{currency}} {{info?.ubalance}}</span>
                 </div>
                 <div class="money">
-                    <span class="text">{{$t('msg.yeb')}}</span>
+                    <span class="text">Web3{{ $t('msg.zichan') }}</span>
                     <span class="value">{{currency}} {{info?.balance}}</span>
                 </div>
                 <div class="money">
@@ -152,6 +152,7 @@ export default {
 .home{
     overflow: auto;
     background: #f5f6ff;
+    margin-top: 100px;
     :deep(.van-nav-bar){
         background-color:$theme;
         color: #fff;

@@ -80,7 +80,7 @@
                     <div class="imge">
                         <img :src="require('@/assets/images/news/ic_finance.png')" width="50" height="50" alt="">
                     </div>
-                    <div class="text">{{$t('msg.yeb')}}</div>
+                    <div class="text">Web3</div>
                 </div>
                 <div class="li nav" @click="toRoute('/chongzhi')">
                     <div class="imge">
@@ -261,8 +261,8 @@ export default {
         // banner图轮播
         const hyList = ref([])
         // 主info
-        const monney = ref('')
-        const mInfo = ref({})
+        const monney = ref(store.state.minfo?.balance)
+    const mInfo = ref(store.state.minfo)
         const activeTab = ref(1)
         const hzhbItems = ref([
             { title: 'msg.zxyhzs', value: '764.90K', bg: require('@/assets/images/bg_a.png') },
@@ -343,6 +343,7 @@ export default {
                 banner.value = res.data.banner
                 monney.value = res.data.balance
                 mInfo.value = {...res.data}
+                store.dispatch('changeminfo',res.data || {})
             }
         })
         if (userinfo.value?.tel) {

@@ -304,6 +304,9 @@ module.exports = {
     zshdqlxkflq: "Activitate exclusivă, vă rugăm să contactați Serviciul Clienți pentru a revendica",
     xyf: "Scor de credit",
     wdcw: "Finanțele mele",
-    qita: "Altele"
+    qita: "Altele",
+    zichan: "Active",
+    dianjifabiaopinglun: "Faceți clic pentru a comenta",
+    zidongpinglun: "Comentarii automate"
     }
   }

@@ -316,6 +316,10 @@ wfsyqtgjgn: "Não é possível usar outros recursos avançados",
 
 zshdqlxkflq: "Atividade exclusiva. Entre em contato com o atendimento ao cliente para resgatar",
 xyf: "Pontuação de Crédito",
-wdcw: "Minhas Finanças"
+wdcw: "Minhas Finanças",
+qita: "Outros",
+zichan: "Ativos",
+dianjifabiaopinglun: "Clique para postar um comentário",
+zidongpinglun: "Comentários automáticos"
     }
   }

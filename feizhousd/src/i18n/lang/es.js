@@ -304,6 +304,9 @@ module.exports = {
   zshdqlxkflq: "Actividad exclusiva. Comuníquese con el servicio al cliente para reclamarla",
   xyf: "Puntaje de Crédito",
   wdcw: "Mi Finanzas",
-  qita: "Otros"
+  qita: "Otros",
+  zichan: "Activos",
+  dianjifabiaopinglun: "Haga clic para publicar un comentario",
+  zidongpinglun: "Comentario automático"
   }
 }
