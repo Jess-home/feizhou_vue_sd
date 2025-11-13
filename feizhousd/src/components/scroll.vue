@@ -30,7 +30,7 @@ export default {
                 x: -this.$refs.wrapper.scrollLeft,
                 y: -this.$refs.wrapper.scrollTop
             }
-            this.handleToTouchEnd(pos)
+            this.handleToTouch(pos)
         },
         scrollToTop(y){
             if (this.$refs.wrapper) {
