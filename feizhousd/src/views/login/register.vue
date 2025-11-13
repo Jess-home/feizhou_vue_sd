@@ -177,6 +177,7 @@ export default {
 .homes{
   height: 100vh;
   overflow: auto;
+  margin-bottom: 200px;
   //background-image: linear-gradient(rgb(10, 66, 255), rgb(11, 199, 255));
     :deep(.van-form){
       padding-bottom: 40px;

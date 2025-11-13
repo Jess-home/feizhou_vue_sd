@@ -116,6 +116,7 @@ export default {
 @import '@/styles/theme.scss';
 .homes{
   height: 100vh;
+  margin-bottom: 200px;
   //background-image: linear-gradient(180deg,#0a3cff,#0bd3ff);
     :deep(.van-form){
         padding: 40px 0 0;

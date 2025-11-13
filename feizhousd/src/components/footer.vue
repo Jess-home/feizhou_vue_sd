@@ -77,9 +77,10 @@ export default {
         will-change: transform;
     
     .f_li{
+        width: 20%;
         // 保持原有样式...
         &.obj{
-            width: auto;
+            // width: auto;
             position: relative;
             padding-top: 0;
             margin-top: -35px;
@@ -100,6 +101,7 @@ export default {
             flex-direction: column;
             justify-content: center;
             text-align: center;
+            
             .img{
                 height: 64px;
                 width: 64px;

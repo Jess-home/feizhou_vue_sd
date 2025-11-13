@@ -160,10 +160,22 @@
             </div>
         </div>
         <div class="list">
-            <van-cell is-link v-for="(item,index) in qitalist" :key="index" @click="toRoute(item,index)">
+            <van-cell is-link @click="toRoute(qitalist[0],0)">
                 <template #title>
-                    <img :src="item.img" :class="index == 1 ? 'img img1' : 'img'" :width="index == 1 ? '30' : '24'" :height="index == 1 ? '30' : '24'" alt="">
-                    {{item.label}}
+                    <img :src="qitalist[0].img" class="img" width="24" height="24" alt="">
+                    {{ $t('msg.tel') }}
+                </template>
+            </van-cell>
+            <van-cell is-link @click="toRoute(qitalist[1],1)">
+                <template #title>
+                    <img :src="qitalist[1].img" class="img img1" width="30" height="30" alt="">
+                    {{ $t('msg.pwd') }}
+                </template>
+            </van-cell>
+            <van-cell is-link @click="toRoute(qitalist[2],2)">
+                <template #title>
+                    <img :src="qitalist[2].img" class="img" width="24" height="24" alt="">
+                    {{ $t('msg.xxgg') }}
                 </template>
             </van-cell>
             <div class="yuyan">
