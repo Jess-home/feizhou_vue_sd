@@ -100,8 +100,8 @@ export default {
   &.login {
     background-color: white;
     .lang-icon {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       vertical-align: middle;
       margin-right: 20px;
     }

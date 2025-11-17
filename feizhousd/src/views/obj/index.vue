@@ -639,6 +639,7 @@ export default {
                     color: #fff;
                     padding: 10px;
                     font-weight: 900;
+                    font-size: 30px;
                 }
                 .van-button.active{
                     background: #ffffff;

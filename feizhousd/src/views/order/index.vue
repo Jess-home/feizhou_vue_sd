@@ -53,7 +53,7 @@
                        </div>
                        <div class="tent" v-if="info.status == 1">
                            <span class="span"></span>
-                           <span class="value"><van-rate v-model="info.pingfen" :size="20" readonly color="#ffd21e" void-icon="star" void-color="#d1d1d1" /></span>
+                           <span class="value"><van-rate v-model="info.pingfen" readonly color="#ffd21e" void-icon="star" void-color="#d1d1d1" /></span>
                        </div>
                    </div>
                     <van-button class="tj-btn" round block type="primary" v-if="info.status == 0 || (info.duorw > 0 && info.time_limit > 1)" @click.stop="goDetail(info.id)">{{$t('msg.tjdd')}}</van-button>
@@ -190,6 +190,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '@/styles/theme.scss';
+
 .tj-btn{
 	height: 82px;
 	line-height: 82px;
@@ -352,6 +353,10 @@ export default {
             }
             .value{
                 color: #999;
+                :deep(.van-rate__icon) {
+                    /* 通过 font-size 控制星星大小（也可设置具体图标宽高） */
+                    font-size: 36px;        /* 调整整体尺寸：试 20/24/28 等 */
+                }
             }
         }
     }

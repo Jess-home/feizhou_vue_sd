@@ -3,7 +3,7 @@
         <van-nav-bar @click-right="clickRight">
             <template #right>
                 <!-- <van-icon name="comment-o" size="18"/> -->
-                <img :src="require('@/assets/images/news/msg3.png')" width="26.5" alt="">
+                <img :src="require('@/assets/images/news/msg3.png')" class="xiaoxiimg" alt="">
             </template>
         </van-nav-bar>
         <!-- <img :src="require('@/assets/images/tel/bg.png')" alt="" class="bg"> -->
@@ -56,11 +56,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/styles/theme.scss';
 .tel{
     .van-nav-bar{
         width: 100%;
         background-color: $theme;
     }
+    .xiaoxiimg{
+            width: 40px;
+            height: 40px;
+        }
     .bg{
         width: 100vw;
         height: 260px;

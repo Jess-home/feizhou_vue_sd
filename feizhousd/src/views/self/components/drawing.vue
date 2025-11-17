@@ -1,9 +1,6 @@
 <template>
   <div class="home">
-    <van-nav-bar :title="$t('msg.tikuan')" left-arrow @click-left="$router.go(-1)" @click-right="clickRight">
-        <template #right>
-            <img :src="require('@/assets/images/self/hank/tel.png')" class="img" alt="">
-        </template>
+    <van-nav-bar :title="$t('msg.tikuan')" left-arrow @click-left="$router.go(-1)">
     </van-nav-bar>
     <van-form @submit="onSubmit">
       <van-cell-group inset>
@@ -199,14 +196,22 @@ export default {
         background-color: $theme;
         color: #fff;
         .van-nav-bar__left{
-            .van-icon{
-                color: #fff;
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
             }
-        }
-        .van-nav-bar__title{
-            color: #fff;
-        }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
+            font-size: 30px;
             img{
                 height: 42px;
             }
@@ -344,6 +349,16 @@ export default {
                 text-align: left;
                 font-size: 28px;
                 margin-bottom: 25px;
+                height: 40px;
+                .van-radio{
+                    font-size: 30px;
+                    .van-radio__icon{
+                        font-size: 30px;
+                    }
+                    .van-radio__label{
+                        line-height: 40px;
+                    }
+                }
                 span{
                     flex: 1;
                     &.tel{

@@ -99,6 +99,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/styles/theme.scss';
 .self{
     overflow: auto;
     gap: 30px;
@@ -112,10 +113,15 @@ export default {
         .van-nav-bar__left{
             .van-icon{
                 color: #fff;
+                font-size: 30px;
             }
         }
         .van-nav-bar__title{
             color: #fff;
+            font-size: 34px;
+        }
+        .van-nav-bar__content{
+            line-height: 40px;
         }
         .van-nav-bar__right{
             img{

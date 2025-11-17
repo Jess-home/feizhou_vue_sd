@@ -2,7 +2,7 @@
     <div class="tel home">
         <van-nav-bar :title="$t('msg.txjl')" left-arrow @click-left="$router.go(-1)" @click-right="clickRight">
             <template #right>
-                <van-icon name="comment-o" size="18"/>
+                <van-icon name="comment-o" />
             </template>
         </van-nav-bar>
         <van-list
@@ -82,6 +82,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import "@/styles/theme.scss";
 .tel{
     overflow: auto;
     :deep(.van-nav-bar){
@@ -89,19 +90,24 @@ export default {
         margin-bottom: 40px;
         color: #fff;
         .van-nav-bar__left{
-            .van-icon{
-                color: #fff;
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
             }
-        }
-        .van-nav-bar__title{
-            color: #fff;
-        }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
-            img{
-                height: 42px;
-            }
             .van-icon{
                 color: #fff;
+                font-size: 32px;
             }
         }
     }

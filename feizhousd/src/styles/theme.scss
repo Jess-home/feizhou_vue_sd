@@ -2,15 +2,20 @@
 :deep(.van-button--primary){
     background-color: $theme;
     border-color: $theme;
+    font-size: 30px;
+    height: 80px;
     &.van-button--plain{
         background-color: white;
         color: $theme;
     }
 }
-
+:deep(.van-list__finished-text){
+    font-size: 30px;
+}
 :deep(.van-tabs){
     .van-tabs__nav--card{
         border: var(--van-border-width-base) solid $theme;
+        height: 60px;
     }
     .van-tab--card{
         border-right: var(--van-border-width-base) solid $theme;
@@ -23,6 +28,16 @@
     }
     .van-tabs__line{
         background-color: $theme;
+    }
+    .van-tab{
+        font-size: 30px;
+        line-height: 50px;
+    }
+    .van-tabs__wrap{
+        height: 8vw;
+    }
+    .van-empty__description{
+        font-size: 30px;
     }
 }
 

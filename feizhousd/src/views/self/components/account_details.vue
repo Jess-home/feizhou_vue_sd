@@ -100,14 +100,22 @@ export default {
         background-color: $theme;
         color: #fff;
         .van-nav-bar__left{
-            .van-icon{
-                color: #fff;
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
             }
-        }
-        .van-nav-bar__title{
-            color: #fff;
-        }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
+            font-size: 30px;
             img{
                 height: 42px;
             }

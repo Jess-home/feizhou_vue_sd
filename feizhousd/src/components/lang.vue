@@ -2,7 +2,7 @@
     <div class="footer">
         <!-- <img :src="require('@/assets/images/lang'+(color == 'white' ? 1 : '')+'.png')" class="lang" height="27" width="27" alt="" @click="showLang()"> -->
          <div class="lang_select" @click="showLang()">
-            <img :src="require('@/assets/images/lang.png')" class="lang" height="22" width="22" alt="">
+            <img :src="require('@/assets/images/lang.png')" class="lang" alt="">
             <div style="margin-left: 10px;">{{ langcheck }}</div>
          
          </div>
@@ -73,13 +73,17 @@ export default {
 <style lang="scss" scoped>
     .lang_select{
         color: white;
-        font-size: 32px;
+        font-size: 28px;
         font-weight: bold;
         background-color: #1a7ae7;
         padding: 10px 20px;
         border-radius: 9999px;
         display: flex;
         align-items: center;
+        .lang{
+            width: 28px;
+            height: 28px;
+        }
         }
     .lang_box{
         width: 100%;

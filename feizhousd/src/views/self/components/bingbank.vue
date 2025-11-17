@@ -512,14 +512,21 @@ export default {
   :deep(.van-nav-bar) {
     background-color: $theme;
     color: #fff;
-    .van-nav-bar__left {
-      .van-icon {
-        color: #fff;
-      }
-    }
-    .van-nav-bar__title {
-      color: #fff;
-    }
+    .van-nav-bar__left{
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
+            }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
     .van-nav-bar__right {
       img {
         height: 42px;
@@ -647,9 +654,17 @@ export default {
     max-height: 85%;
     display: flex;
     flex-direction: column;
+    font-size: 30px;
     .van-dialog__content {
       flex: 1;
       overflow: auto;
+    }
+    .van-cell{
+      font-size: 30px;
+    }
+    .van-button{
+      font-size: 30px;
+      height: 60px;
     }
     .van-dialog__footer {
       .van-dialog__confirm {

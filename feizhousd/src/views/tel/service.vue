@@ -56,6 +56,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/styles/theme.scss';
 .tel{
     :deep(.van-nav-bar){
             width: 100%;
@@ -65,12 +66,17 @@ export default {
             .van-nav-bar__left{
                 .van-icon{
                     color: #fff;
+                    font-size: 30px;
                 }
+            }
+            .van-nav-bar__content{
+                height: 60px;
             }
             .van-nav-bar__title{
                 color: #ffffff;
                 font-weight: 600;
                 font-size: 32px;
+                line-height: 60px;
             }
         }
     

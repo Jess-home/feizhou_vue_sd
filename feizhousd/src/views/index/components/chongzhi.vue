@@ -151,8 +151,17 @@ export default {
 @import '@/styles/theme.scss';
 .home{
     margin-bottom: 100px;
+    font-size: 30px;
+    :deep(.van-radio__label){
+        line-height: 50px;
+    }
+    :deep(.van-radio__icon){
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
     :deep(.van-nav-bar){
-        // background-color: $theme;
+        background-color: $theme;
         // color: #fff;
         // .van-nav-bar__left{
         //     .van-icon{
@@ -162,7 +171,24 @@ export default {
         // .van-nav-bar__title{
         //     color: #fff;
         // }
+        .van-nav-bar__left{
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
+            }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
+            color: #fff;
+            font-size: 30px;
             img{
                 height: 42px;
             }
@@ -174,6 +200,8 @@ export default {
             padding: 15px;
             background-color: rgba(219,228,246,.8);
             margin-bottom: 15px;
+            font-size: 30px;
+            line-height: 40px;
         }
         
         .text_b{
@@ -208,11 +236,11 @@ export default {
             color: #333;
             .span{
                 width: 30%;
-                line-height: 32PX;
+                line-height: 32px;
                 text-align: center;
                 border-radius: 6px;
                 border: 1px solid $theme;
-                font-size: 12PX;
+                font-size: 30px;
                 margin-bottom: 20px;
                 margin-left: 5%;
                 background-color: #fff;

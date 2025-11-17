@@ -384,7 +384,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/styles/theme.scss';
 .self{
+    :deep(.van-cell__right-icon){
+        font-size: 30px;
+    }
     overflow: auto;
     display: block !important;
     padding: 0 30px;
@@ -438,7 +442,7 @@ export default {
                 .hc-name{ font-size:36px; color:#222;display:flex;align-items: center; gap:15px;}
                 .hc-invite{ font-size:28px; color:#666; margin-top:4px;display: flex;align-items: center; }
                 .code{ background:#f5f5f5; padding:2px 6px; border-radius:6px; margin:0 8px; font-weight:700 }
-                .hc-copy{ background:#fdb824; color:#fff; padding:0 8px;border-radius: 15px; }
+                .hc-copy{ background:#fdb824; color:#fff; padding:0 8px;border-radius: 15px;font-size: 30px; height: 40px;}
                 .hc-score-label{ font-size:28px; color:#666;display: flex;flex-direction: row;align-items: center;gap: 20px; }
                 .jindutiao{width: 150px;}
                 .vip{width: 55px;}
@@ -531,6 +535,7 @@ export default {
                         color: #fff;
                         padding: 10px;
                         font-weight: 900;
+                        font-size: 30px;
                     }
                     .van-button.active{
                         background: #ffffff;
@@ -674,6 +679,8 @@ export default {
                 .img{
                     margin-right: 10px;
                     vertical-align: middle;
+                    width: 40px;
+                    height: 40px;
                     &.img1{
                         margin-left: -3PX;
                     }

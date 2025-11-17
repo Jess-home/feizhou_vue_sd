@@ -27,6 +27,16 @@ const routes = [
     name: 'detail',
     component: ()=> import('@/views/order/detail.vue')
   },
+// 余利宝
+  {
+    path: '/libao',
+    name: 'libao',
+    meta: {
+      keepAlive: true,
+      name: 'libao'
+    },
+    component: () => import(/* webpackChunkName: "index" */ '@/views/index/components/libao.vue')
+  },
   {
     path: '/',
     name: 'index',
@@ -188,16 +198,7 @@ const routes = [
         },
         component: () => import(/* webpackChunkName: "index" */ '@/views/self/components/drawing.vue')
       },
-      // 余利宝
-      {
-        path: '/libao',
-        name: 'libao',
-        meta: {
-          keepAlive: true,
-          name: 'libao'
-        },
-        component: () => import(/* webpackChunkName: "index" */ '@/views/index/components/libao.vue')
-      },
+      
       // 余利宝转入记录
       {
         path: '/libao_jl',

@@ -65,7 +65,7 @@
 				<div class="pingluna">
 					<div>{{ $t('msg.dianjifabiaopinglun') }}</div>
 					<div>
-						<van-rate v-model="pinglun" :size="20" color="#ffd21e" void-icon="star" void-color="#d1d1d1" />
+						<van-rate v-model="pinglun" color="#ffd21e" void-icon="star" void-color="#d1d1d1" />
 					</div>
 				</div>
 				<div class="pinglunb">
@@ -238,13 +238,20 @@ export default {
         top: 0;
         width: 100%;
         .van-nav-bar__left{
-            .van-icon{
-                color: #fff;
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
             }
-        }
-        .van-nav-bar__title{
-            color: #fff;
-        }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
             img{
                 height: 42px;
@@ -368,6 +375,10 @@ export default {
 				align-items: center;
 				width: 100%;
 		}
+        .pingluna :deep(.van-rate__icon) {
+            /* 通过 font-size 控制星星大小（也可设置具体图标宽高） */
+            font-size: 36px;        /* 调整整体尺寸：试 20/24/28 等 */
+        }
 		.pinglunb{
 				margin-top: 20px;
 				width: 98%;
@@ -375,6 +386,26 @@ export default {
 		border: 1px solid #dadada;
 		border-radius: 5px;
         background-color: #fff;
+        font-size: 30px;
+        :deep(.van-cell__title) {
+            font-size: 30px;    /* 例如 28/30 按需调整 */
+            color: #333;
+            line-height: 50px;
+        }
+
+            /* 调整 cell 值（右侧）文字大小 */
+        :deep(.van-cell__value) {
+            font-size: 28px;
+            color: #666;
+            line-height: 50px;
+            }
+        :deep(.van-button__content){
+            height: 30px;
+        }
+        :deep(.van-button--mini){
+            font-size: 20px;
+            height: 30px;
+        }
 		}
 }
 </style>

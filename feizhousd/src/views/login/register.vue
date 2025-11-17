@@ -175,10 +175,15 @@ export default {
 <style scoped lang="scss">
 @import '@/styles/theme.scss';
 .homes{
-  height: 100vh;
-  overflow: auto;
   margin-bottom: 200px;
   //background-image: linear-gradient(rgb(10, 66, 255), rgb(11, 199, 255));
+    :deep(.van-cell){
+        font-size: 20px;
+        line-height: 30px;
+      }
+    :deep(.van-field__error-message){
+      font-size: 20px;
+    }
     :deep(.van-form){
       padding-bottom: 40px;
         .van-cell-group--inset{
@@ -196,6 +201,9 @@ export default {
               .van-field__left-icon{
                 margin-right: 30px;
               }
+            }
+            .van-field__label{
+              width: 200px !important;
             }
             .van-field__left-icon{
                 margin-right: 90px;
@@ -251,6 +259,34 @@ export default {
                 padding: 26px 0;
                 height: auto;
                 margin-top: 40px;
+            }
+        }
+    }
+  :deep(.van-nav-bar){
+        background-color: #000000;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        .van-nav-bar__left{
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
+            }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
+        .van-nav-bar__right{
+            img{
+                height: 42px;
             }
         }
     }

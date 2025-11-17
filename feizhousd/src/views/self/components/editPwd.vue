@@ -159,13 +159,20 @@ export default {
         background-color: $theme;
         color: #fff;
         .van-nav-bar__left{
-            .van-icon{
-                color: #fff;
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
             }
-        }
-        .van-nav-bar__title{
-            color: #fff;
-        }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
             img{
                 height: 42px;
@@ -196,7 +203,8 @@ export default {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 word-break: keep-all;
-                font-size: 14PX;
+                font-size: 30px;
+                line-height: 50px;
             }
             .van-radio__icon--checked+.van-radio__label{
                 // font-size: 26px;
@@ -226,7 +234,7 @@ export default {
             }
             padding: 23px 10px;
             border-bottom: 1px solid  var(--van-cell-border-color);
-            font-size: 13.5PX;
+            font-size: 30px;
             .van-field__left-icon{
                 width:120px;
                 text-align: center;
@@ -249,6 +257,9 @@ export default {
                     padding: 30px 80px;
                   }
                 }
+            }
+            .van-field__error-message{
+                font-size: 20px;
             }
             .van-field__control{
                 font-size: 24px;

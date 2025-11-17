@@ -7,7 +7,7 @@
             <template #right>
                 <!-- <img :src="$store.state.langImg" class="lang" height="18" width="27" alt=""> -->
                 <!-- <lang-vue></lang-vue> -->
-                 <img @click="$router.push({path: '/message'})" :src="require('@/assets/images/news/msg2.png')" width="26.5" alt="">
+                 <img @click="$router.push({path: '/message'})" :src="require('@/assets/images/news/msg2.png')" class="xiaoxiimg" alt="">
             </template>
         </van-nav-bar>
         <!-- <div class="top">
@@ -420,6 +420,10 @@ export default {
             width: 250px;
             height: 100px;
         }
+        .xiaoxiimg{
+            width: 40px;
+            height: 40px;
+        }
         .top{
             height: 62px;
             position: absolute;
@@ -438,6 +442,7 @@ export default {
             width: 100%;
             position: relative;
             padding-top: 60px;
+            font-size: 30px;
             .lang_title {
                 margin-bottom: 40px;
             }

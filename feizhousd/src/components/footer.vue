@@ -63,14 +63,15 @@ export default {
     .footer{
     display: flex;
     justify-content: space-around;
-    position: fixed;
-        width: 100%;
-        bottom: -18px;
-        left: 0;
-        padding: 0;
-        z-index: 999;
-        background: #fff;
-        filter: drop-shadow(0 0 4px #bbb);
+    height: 6.5rem;
+    // position: fixed;
+    //     width: 100%;
+        // bottom: -18px;
+        // left: 0;
+        // padding: 0;
+        // z-index: 999;
+        // background: #fff;
+        // filter: drop-shadow(0 0 4px #bbb);
         /* iOS Safari 优化 */
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
@@ -83,14 +84,14 @@ export default {
             // width: auto;
             position: relative;
             padding-top: 0;
-            margin-top: -35px;
+            margin-top: -1rem;
             .span{
                 background: #ffffff00;
                 padding: 5px;
-                height: 220px;
+                // height: 220px;
                 .img{
-                    height: 100px;
-                    width: 100px;
+                    height: 3rem;
+                    width: 3rem;
                 }
             }
         }
@@ -103,12 +104,12 @@ export default {
             text-align: center;
             
             .img{
-                height: 64px;
-                width: 64px;
-                margin: 0 auto 10px;
+                height: 2rem;
+                width: 2rem;
+                margin: 0 auto 1rem;
             }
             .text{
-                font-size: 26px;
+                font-size: .9rem;
                 color: #a19fa8;
                 white-space: wrap;
                 line-height: 1;

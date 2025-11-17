@@ -80,7 +80,7 @@
         </div>
         </van-popup>
 
-        <div class="yezr">{{$t('msg.record')}}</div>
+        <div class="yezr">{{$t('msg.record')}}：</div>
 
         <!-- 来自 libao_jl.vue 的记录列表 -->
         <van-list
@@ -281,13 +281,20 @@ export default {
         top: 0;
         width: 100%;
         .van-nav-bar__left{
-            .van-icon{
-                color: #fff;
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
             }
-        }
-        .van-nav-bar__title{
-            color: #fff;
-        }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
         .van-nav-bar__right{
             img{
                 height: 42px;
@@ -297,7 +304,13 @@ export default {
     :deep(.van-cell--clickable) {
         .van-cell__right-icon{
             color: #ff5e0e;
+            font-size: 32px;
+            line-height: 40px;
         }
+    }
+    :deep(.van-cell__value--alone){
+        font-size: 32px;
+        line-height: 40px;
     }
     .content{
         padding: 0 30px;
@@ -308,6 +321,7 @@ export default {
             color: #333;
             margin-top: 50px;
             margin-bottom: 50px;
+            font-size: 30px;
         }
         .licai{
             margin-top: 20px;
@@ -367,6 +381,10 @@ export default {
                             display: inline-flex;
                             border: 1px solid #ff5e0e;
                             border-radius: 5px;
+                            .logo-head{
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
                     }
                     .value{
@@ -387,6 +405,7 @@ export default {
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
+                        font-size: 30px;
                     }
                     .van-field__control{
                         font-size: 24px;

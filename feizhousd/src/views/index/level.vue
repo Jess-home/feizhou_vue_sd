@@ -93,6 +93,31 @@ export default {
 .level-page {
     min-height: 100vh;
     background: #f5f5f5;
+
+    :deep(.van-nav-bar){
+        background-color: $theme;
+        color: #fff;
+        .van-nav-bar__left{
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
+            }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
+        .van-nav-bar__right{
+            img{
+                height: 42px;
+            }
+        }
+    }
     
     .content {
         padding: 20px;

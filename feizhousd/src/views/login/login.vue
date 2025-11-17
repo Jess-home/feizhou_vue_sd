@@ -64,18 +64,7 @@ export default {
       }
     }
 
-    // 只清除用户相关数据，保留语言、基础信息等
-    const clearUserData = () => {
-      const keysToKeep = ['lang', 'baseInfo', 'langImg'] // 保留这些 key
-      const allKeys = Object.keys(localStorage)
-      allKeys.forEach(key => {
-        if (!keysToKeep.includes(key)) {
-          localStorage.removeItem(key)
-        }
-      })
-    }
-    
-    clearUserData()
+    localStorage.clear()
 
     const onSubmit = (values) => {
       const json = {...values}
@@ -126,8 +115,7 @@ export default {
 <style scoped lang="scss">
 @import '@/styles/theme.scss';
 .homes{
-  height: 100vh;
-  margin-bottom: 200px;
+margin-bottom: 200px;
   //background-image: linear-gradient(180deg,#0a3cff,#0bd3ff);
     :deep(.van-form){
         padding: 40px 0 0;
@@ -205,6 +193,33 @@ export default {
             .van-button--plain{
                 
             }
+        }
+    }
+    :deep(.van-nav-bar){
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        .van-nav-bar__left{
+                .van-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
+            }
+            .van-nav-bar__content{
+                height: 60px;
+            }
+            .van-nav-bar__title{
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 60px;
+            }
+        .van-nav-bar__right{
+            // img{
+            //     height: 42px;
+            // }
         }
     }
 }
