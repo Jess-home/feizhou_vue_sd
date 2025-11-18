@@ -159,7 +159,7 @@ margin-bottom: 200px;
                 }
             }
             .van-field__control{
-                font-size: 24px;
+                font-size: 30px;
             }
             &::after {
                 display: none;
@@ -176,7 +176,7 @@ margin-bottom: 200px;
                 }
             }
             .van-checkbox__label{
-                font-size: 24px;
+                font-size: 30px;
             }
         }
         .buttons{
@@ -189,9 +189,6 @@ margin-bottom: 200px;
                 &+.van-button{
                   margin-top: 20px;
                 }
-            }
-            .van-button--plain{
-                
             }
         }
     }
@@ -216,11 +213,6 @@ margin-bottom: 200px;
                 font-size: 32px;
                 line-height: 60px;
             }
-        .van-nav-bar__right{
-            // img{
-            //     height: 42px;
-            // }
-        }
     }
 }
 </style>

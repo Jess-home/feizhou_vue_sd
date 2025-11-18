@@ -178,11 +178,11 @@ export default {
   margin-bottom: 200px;
   //background-image: linear-gradient(rgb(10, 66, 255), rgb(11, 199, 255));
     :deep(.van-cell){
-        font-size: 20px;
+        font-size: 30px;
         line-height: 30px;
       }
     :deep(.van-field__error-message){
-      font-size: 20px;
+      font-size: 30px;
     }
     :deep(.van-form){
       padding-bottom: 40px;
@@ -229,7 +229,7 @@ export default {
                 }
             }
             .van-field__control{
-                font-size: 24px;
+                font-size: 30px;
             }
             .van-field__label{
               color: #000;
@@ -249,7 +249,7 @@ export default {
                 }
             }
             .van-checkbox__label{
-                font-size: 24px;
+                font-size: 30px;
             }
         }
         .buttons{
