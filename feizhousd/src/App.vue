@@ -1,14 +1,13 @@
 <template>
-  <div class="viewport-outer" :class="{ 'is-scaled': isScaled }" :style="{ '--current-scale': scale }">
-    <div class="viewport-scaler" :style="scalerStyle">
-      <div class="app-content" :style="{ width: `${innerWidth}px` }">
+  <div class="viewport-outer">
+    <div class="viewport-container">
+      <div class="app-content">
         <my-scroll>
           <router-view />
         </my-scroll>
       </div>
+      <Footer v-if="showFooter" />
     </div>
-    <!-- ⭐ Footer 必须放在这里，在 viewport-scaler 外面 -->
-    <Footer v-if="showFooter" />
   </div>
 </template>
 
@@ -20,46 +19,39 @@ import { vantLocales } from '@/i18n/i18n'
 import myScroll from './components/scroll.vue'
 import Footer from './components/footer.vue' // ⭐ 引入 footer
 import { useRoute } from 'vue-router'
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 export default {
-  components: { myScroll, Footer }, // ⭐ 注册
+  components: { myScroll, Footer },
   setup () {
     const { locale } = useI18n()
     const route = useRoute()
-    const innerWidth = ref(window.innerWidth)
-    const innerHeight = ref(window.innerHeight)
-    const targetWidth = ref(1000)
-    const scale = ref(1)
 
     const showFooter = computed(() => {
       const noFooterPages = ['login', 'register', 'service','level','libao','detail']
       return !noFooterPages.includes(route.name)
     })
 
-    const computeScale = () => {
-      const w = window.innerWidth
-      const h = window.innerHeight
-      innerWidth.value = w
-      innerHeight.value = h
-      scale.value = w > targetWidth.value ? targetWidth.value / w : 1
+    // 设置rem基准，让1rem始终等于设计稿中的1px/20
+    // 在不同设备上保持字体和尺寸一致
+    const setRem = () => {
+      //取消整体尺寸自动缩放1
+                    // const width = window.innerWidth
+                    // // 限制最大宽度为1000px，超过1000px时rem基准不再增大
+                    // const baseWidth = Math.min(width, 1000)
+                    // // 设计稿750px，除以20得到37.5作为基准
+                    // // 在1000px宽度时：1000/20 = 50
+                    // const rem = baseWidth / 20
+                    // document.documentElement.style.fontSize = rem + 'px'
+      document.documentElement.style.fontSize = 18 + 'px'
     }
 
     onMounted(() => {
-      computeScale()
-      window.addEventListener('resize', computeScale)
-    })
-    onBeforeUnmount(() => {
-      window.removeEventListener('resize', computeScale)
-    })
+      setRem()
 
-    const scalerStyle = computed(() => ({
-      transform: `scale(${scale.value})`,
-      transformOrigin: 'top center',
-      width: `${innerWidth.value}px`,
-      height: `${innerHeight.value / (scale.value || 1)}px`,
-      '--current-scale': scale.value // 暴露scale值给CSS使用
-    }))
+      //取消整体尺寸自动缩放2
+                  //window.addEventListener('resize', setRem)
+    })
 
     const changeFavicon = link => {
       let $favicon = document.querySelector('link[rel="icon"]')
@@ -91,13 +83,8 @@ export default {
       console.log(err)
     })
 
-    const isScaled = computed(() => scale.value < 1)
     return {
-      innerWidth,
-      scalerStyle,
-      isScaled,
-      showFooter,
-      scale // 将scale暴露给模板使用
+      showFooter
     }
   }
 }
@@ -108,54 +95,43 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100vh;
-  overflow: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
 }
-.viewport-scaler{
-  will-change: transform;
+
+.viewport-container{
+  width: 100%;
+  max-width: 1000px; /* 最大宽度1000px */
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
 .app-content{
+  flex: 1;
+  width: 100%;
   box-sizing: border-box;
-  min-height: 100%;
 }
+
 .app-content > *{
-  height: 100%;
   min-height: 100%;
 }
 
-.viewport-outer.is-scaled .home_box{
-  height: 100% !important;
-  min-height: 100% !important;
-}
-
-/* ⭐ Footer 样式 - 固定在视口底部 */
-.viewport-outer > .footer{
-  position: fixed !important;
-  left: 50% !important;
-  bottom: 0 !important;
-  z-index: 9999 !important;
-  background: #fff !important;
-  box-shadow: 0 -2px 8px rgba(187, 187, 187, 0.3) !important;
-  transform-origin: center bottom !important;
-}
-
-/* 未缩放时（手机端） */
-.viewport-outer:not(.is-scaled) > .footer{
-  width: 100% !important;
-  max-width: 1000px !important;
-  transform: translateX(-50%) !important;
-}
-
-/* 缩放时（PC端） */
-.viewport-outer.is-scaled > .footer{
-  /* Footer需要与主内容等宽
-     主内容实际宽度是innerWidth，缩放后视觉宽度是1000px
-     所以Footer原始宽度应该是innerWidth，缩放scale后视觉是1000px */
-  width: 100vw !important;
-  max-width: 100vw !important;
-  transform: translateX(-50%) scale(var(--current-scale, 1)) !important;
+/* ⭐ Footer 样式 - 固定在底部 */
+.viewport-container > .footer{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  max-width: 1000px; /* 与container一致 */
+  z-index: 9999;
+  background: #fff;
+  box-shadow: 0 -2px 8px rgba(187, 187, 187, 0.3);
 }
 
 #app {
