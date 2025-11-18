@@ -57,13 +57,18 @@
                         </template>
                         <template v-else>
                             <div class="flex-full">
-                                <div>{{$t('msg.zsy')}}</div>
-                                <div class="two">{{mInfo.yon3}}</div>
+                                <div>{{$t('msg.order')}}{{$t('msg.get_m')}}</div>
+                                <div class="two">{{mInfo.yon2}}</div>
                             </div>
                             <div class="flex-full">
                                 <div>{{$t('msg.tdsy')}}</div>
                                 <div class="two">{{mInfo.Teambenefits}}</div>
                             </div>
+                            <div class="flex-full">
+                                <div>{{$t('msg.zsy')}}</div>
+                                <div class="two">{{mInfo.yon3}}</div>
+                            </div>
+                            
                         </template>
                     </div>
                 </div>
