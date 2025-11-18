@@ -114,7 +114,7 @@ export default {
     }
   }
         :deep(.van-nav-bar){
-            position: fixed !important;
+            // position: fixed !important;
             // top: 0;
             color: #333;
             padding: 10px 0;
