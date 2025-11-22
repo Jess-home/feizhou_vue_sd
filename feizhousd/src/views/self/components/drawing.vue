@@ -11,7 +11,7 @@
           <div class="check_money">
               <div class="text">
                   <span class="tel">{{$t('msg.phone')}}</span>
-                  <span>{{tel}}</span>
+                  <span>{{tel.slice(0, 3) + '****' +  tel.slice(-4)}}</span>
               </div>
               <div class="text">
                   <span>{{$t('msg.input_yhxz')}}</span>
@@ -19,7 +19,7 @@
 			  <div class="text">
 			    <van-radio-group v-model="checked" >
 			        <van-radio v-for="(item,index) in info" :key="index" :name="item.id" >
-			            {{$t('msg.khlx')}} {{item.bank_type}} - {{item.cardnum}}
+			            {{$t('msg.khlx')}} {{item.bank_type}} - {{item.cardnum.slice(0, 3) + '********' +  item.cardnum.slice(-4)}}
 			        </van-radio>
 			    </van-radio-group>
 			  </div>

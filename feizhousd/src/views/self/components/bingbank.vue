@@ -17,11 +17,11 @@
       </div>
       <div class="li" v-if="py_status !== 2">
         <span class="span">{{ $t("msg.yhkh") }}：</span>
-        <span class="span">{{ item.cardnum }}</span>
+        <span class="span">{{ item.cardnum.slice(0, 3) + '********' +  item.cardnum.slice(-4)}}</span>
       </div>
       <div class="li" v-if="py_status !== 2">
         <span class="span">{{ $t("msg.ylsjh") }}：</span>
-        <span class="span">{{ item.tel }}</span>
+        <span class="span">{{ item.tel.slice(0, 3) + '****' +  item.tel.slice(-4) }}</span>
       </div>
       <div class="li" v-if="py_status == 2">
         <span class="span">{{ $t("msg.usdt_type") }}：</span>
@@ -44,13 +44,14 @@
         {{ $t("msg.add") }}
       </van-button>
     </div>
-	<!-- 选择银行下拉框 --> 
+    <!-- 选择银行下拉框 (原 van-picker 已注释，替换为可在 PC 上滚动的列表) -->
+    <!--
     <van-popup v-model:show="showHank" position="bottom">
       <van-picker
         :columns="bank_list"
         @confirm="onConfirm"
         @cancel="showHank = false"
-		:model="edit_data.bankname"
+        :model="edit_data.bankname"
         :confirm-button-text="$t('msg.yes')"
         :cancel-button-text="$t('msg.quxiao')"
       />
@@ -60,10 +61,32 @@
         :columns="tondao_type"
         @confirm="onConfirm1"
         @cancel="showType = false"
-		:model="edit_data.bank_type"
+        :model="edit_data.bank_type"
         :confirm-button-text="$t('msg.yes')"
         :cancel-button-text="$t('msg.quxiao')"
       />
+    </van-popup>
+    -->
+
+    <!-- 替代实现：使用 van-popup 从底部弹出，高度 50%，内部为可滚动列表（兼容 PC 鼠标滚轮） -->
+    <van-popup v-model:show="showHank" position="bottom" round class="custom-popup-bottom">
+      <div class="picker-list">
+        <ul>
+          <li v-for="(b, idx) in bank_list" :key="b.value" @click="selectBank(b)">
+            {{ b.text }}
+          </li>
+        </ul>
+      </div>
+    </van-popup>
+
+    <van-popup v-model:show="showType" position="bottom" round class="custom-popup-bottom">
+      <div class="picker-list">
+        <ul>
+          <li v-for="(t, idx) in tondao_type" :key="t.value || t.text" @click="selectType(t)">
+            {{ t.text }}
+          </li>
+        </ul>
+      </div>
     </van-popup>
 	
 	<!-- 修改银行卡 -->
@@ -449,6 +472,23 @@ export default {
       showType.value = false;
     };
 
+    const selectBank = (b) => {
+      if (py_status.value == 2) {
+        usdt_type.value = b.value;
+      } else {
+        edit_data.value.bankname = b.text;
+        edit_data.value.bank_code = b.value;
+      }
+      showHank.value = false;
+    };
+
+    const selectType = (t) => {
+      // t may be {text,value} or plain string
+      const text = t?.text ?? t;
+      edit_data.value.bank_type = text;
+      showType.value = false;
+    };
+
     const onSubmit = (values) => {
       if (!bank_code.value) {
         proxy.$Message({ type: "error", message: t("msg.input_yhxz") });
@@ -493,6 +533,8 @@ export default {
       clickRight,
       bank_list,
       tondao_type,
+      selectBank,
+      selectType,
       showKeyboard,
       info,
       showPwd,
@@ -671,6 +713,43 @@ export default {
         color: $theme;
       }
     }
+  }
+
+  /* Picker list used to replace van-picker for PC (scrollable) */
+  .picker-list {
+    padding: 0 0 10px;
+  }
+  .picker-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 45vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  .picker-list li {
+    padding: 14px 20px;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 28px;
+    cursor: pointer;
+  }
+  .picker-list li:hover {
+    background: #f5f5f7;
+  }
+
+  /* Ensure the popup container is constrained to 50% height and inner body allows wheel */
+  :deep(.van-popup.custom-popup-bottom.van-popup--bottom) {
+    max-height: 50vh !important;
+    height: auto !important;
+    margin-bottom: 200px !important;
+  }
+
+  :deep(.van-popup.custom-popup-bottom.van-popup--bottom) :deep(.van-popup__body),
+  .picker-list ul {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 }
 </style>
